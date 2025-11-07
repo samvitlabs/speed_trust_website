@@ -6,7 +6,7 @@ import { AuthProvider } from '../context/AuthContext';
 export default function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <div className="flex min-h-screen flex-col bg-brand-background text-slate-900">
+      <div className="flex min-h-screen flex-col bg-brand-background text-slate-900 overflow-x-hidden">
         <Header />
         <main className="flex-1">
           <Component {...pageProps} />

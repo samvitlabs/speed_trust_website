@@ -279,7 +279,7 @@ export default function Home() {
   const handleTestimonialNav = (direction) => cycleTestimonial(direction);
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)] overflow-hidden">
       <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden fade-in-up">
         {heroSlides.map((slide, index) => (
           <div
@@ -291,7 +291,7 @@ export default function Home() {
             aria-hidden={index !== heroIndex}
           >
             <div className="absolute inset-0 hero-overlay" />
-            <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white fade-in-up" aria-live={index === heroIndex ? 'polite' : 'off'}>
+            <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white fade-in-up sm:px-6" aria-live={index === heroIndex ? 'polite' : 'off'}>
               <h1 className="mt-4 max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
                 Southern Pothigai Environmental and Educational Trust
               </h1>
@@ -338,8 +338,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-16 fade-in-up">
-        <div className="mx-auto max-w-6xl rounded-[32px] border border-[var(--color-brand-green)]/10 bg-white/80 p-10 shadow-2xl shadow-[rgba(12,28,20,0.08)] backdrop-blur">
+      <section className="px-4 py-16 fade-in-up sm:px-6">
+        <div className="mx-auto max-w-6xl rounded-[32px] border border-[var(--color-brand-green)]/10 bg-white/80 p-6 shadow-2xl shadow-[rgba(12,28,20,0.08)] backdrop-blur sm:p-10">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-brand-green)]">
               Field Dispatches
@@ -350,7 +350,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => handleNewsNav(-1)}
-              className={`absolute left-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
+              className={`absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition sm:flex ${
                 newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
               }`}
               aria-label="Previous news story"
@@ -361,7 +361,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => handleNewsNav(1)}
-              className={`absolute right-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
+              className={`absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition sm:flex ${
                 newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
               }`}
               aria-label="Next news story"
@@ -390,7 +390,7 @@ export default function Home() {
                                   aria-label={item.title}
                                 />
                               </div>
-                              <div className="space-y-3 px-6 py-6">
+                              <div className="space-y-3 px-4 py-6 sm:px-6">
                                 <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">{item.date}</p>
                                 <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
                                 <p className="text-base text-slate-600">{item.summary}</p>
@@ -410,7 +410,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--color-brand-cream)] px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
         <div className="mx-auto max-w-6xl space-y-16">
           {alternatingSections.map((section, index) => (
             <article
@@ -448,7 +448,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={impactRef} className="section-canopy px-6 py-16 fade-in-up">
+      <section ref={impactRef} className="section-canopy px-4 py-16 fade-in-up sm:px-6">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
           {impactMetrics.map((metric, index) => (
             <div
@@ -466,7 +466,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--color-brand-mist)] px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-mist)] px-4 py-16 fade-in-up sm:px-6">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-4xl font-bold text-slate-900">Partners</h2>
           <div className="mt-12 overflow-hidden">
@@ -497,7 +497,7 @@ export default function Home() {
         `}</style>
       </section>
 
-      <section className="bg-[var(--color-brand-cream)] px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-4xl font-bold text-slate-900">Our Team</h2>
           <p className="mt-3 text-base text-slate-600">
@@ -553,7 +553,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[var(--color-brand-cream)] px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-bold text-slate-900">Testimonials</h2>
         </div>
