@@ -71,7 +71,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3" aria-label="Speed Trust home">
             <Image
-              src="/images/logo-placeholder.svg"
+              src="/images/logo.png"
               alt="Speed Trust logo"
               width={72}
               height={72}
