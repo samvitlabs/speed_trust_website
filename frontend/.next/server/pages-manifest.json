@@ -2,10 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/news": "pages/api/news.js",
+  "/events/[slug]": "pages/events/[slug].js",
   "/events": "pages/events.js",
   "/about": "pages/about.js",
-  "/": "pages/index.js",
-  "/courses": "pages/courses.js",
-  "/contact": "pages/contact.js"
+  "/": "pages/index.js"
 }

@@ -5,6 +5,7 @@
     "description": "Hands-on GIS, drone mapping, and participatory surveying for rural water security teams.",
     "institution": "Speed Trust Learning Commons",
     "domain": "Hydrology",
+    "subdomain": "Watershed Diagnostics",
     "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/watershed-mapping"
   },
@@ -14,6 +15,7 @@
     "description": "Soil microbiology, composting systems, and regenerative cropping tailored for smallholders.",
     "institution": "TNAU x Speed Trust",
     "domain": "Agroecology",
+    "subdomain": "Soil Health",
     "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/living-soils"
   },
@@ -23,6 +25,7 @@
     "description": "Curriculum prototyping sprint for educators blending storytelling, robotics, and citizen science.",
     "institution": "Azim Premji University Hub",
     "domain": "Education",
+    "subdomain": "Learning Design",
     "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/eco-edu-studio"
   },
@@ -32,6 +35,7 @@
     "description": "Multi-month mentorship on community forestry, carbon literacy, and policy dialogues.",
     "institution": "Keystone Foundation Residency",
     "domain": "Forestry",
+    "subdomain": "Community Forestry",
     "image": "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/forest-commons"
   },
@@ -41,6 +45,7 @@
     "description": "Narrative strategy for filmmakers, podcasters, and youth media collectives amplifying frontline stories.",
     "institution": "ATREE Media Lab",
     "domain": "Storytelling",
+    "subdomain": "Storycraft",
     "image": "https://images.unsplash.com/photo-1475688621402-4257f5b911ef?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/climate-story"
   },
@@ -50,6 +55,7 @@
     "description": "Interdisciplinary studio prototyping nature-based infrastructure and art along riverbanks.",
     "institution": "IIT Madras CSR",
     "domain": "Urban Ecology",
+    "subdomain": "River Infrastructure",
     "image": "https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/riparian-design"
   },
@@ -59,6 +65,7 @@
     "description": "Semester-long peer learning for students leading campus sustainability projects.",
     "institution": "Speed Trust + Schools Network",
     "domain": "Youth Leadership",
+    "subdomain": "Student Leadership",
     "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/youth-earth"
   },
@@ -68,6 +75,7 @@
     "description": "Makerspace training to build sensors, map air quality, and negotiate local clean air plans.",
     "institution": "Open Climate Labs",
     "domain": "Citizen Science",
+    "subdomain": "Citizen Sensing",
     "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/community-air"
   },
@@ -77,6 +85,7 @@
     "description": "Business modeling coaching for farmer producer companies, artisans, and eco-tourism collectives.",
     "institution": "Speed Trust Impact Studio",
     "domain": "Social Entrepreneurship",
+    "subdomain": "Impact Business",
     "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/regenerative-enterprise"
   },
@@ -86,6 +95,7 @@
     "description": "Design thinking bootcamp to reimagine campus water systems, wetlands, and climate-adaptive curricula.",
     "institution": "Speed Trust Learning Commons",
     "domain": "Education",
+    "subdomain": "Water Stewardship",
     "image": "https://images.unsplash.com/photo-1469474203909-7f1481f54c1d?auto=format&fit=crop&w=900&q=80",
     "link": "https://example.org/enroll/blue-schools"
   }

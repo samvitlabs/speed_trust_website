@@ -89,7 +89,7 @@ export default function EventDetail({ event }) {
   const icsHref = generateICSDataUri(event);
 
   return (
-    <main className="bg-[#F9F9F9] text-slate-900">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section
         className="relative h-[60vh] min-h-[420px] w-full bg-cover bg-center"
         style={{ backgroundImage: `url(${event.heroImage})` }}
@@ -109,14 +109,14 @@ export default function EventDetail({ event }) {
       <section className="px-6 py-14">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[2fr_1fr]">
           <article className="space-y-6">
-            <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Overview</p>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Overview</p>
             <p className="text-lg leading-relaxed text-slate-700">{event.description}</p>
             <GalleryCarousel images={event.gallery} />
           </article>
 
           <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Participate</p>
-            <h2 className="mt-3 text-2xl font-semibold text-slate-900">Be part of the next edition</h2>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Participate</p>
+            <h2 className="mt-3 text-2xl font-semibold text-[var(--color-brand-slate)]">Be part of the next edition</h2>
             <p className="mt-4 text-sm text-slate-600">
               We welcome volunteers, storytellers, and field researchers to co-create every gathering.
             </p>
@@ -132,7 +132,7 @@ export default function EventDetail({ event }) {
               <a
                 href={icsHref}
                 download={`${event.slug}.ics`}
-                className="rounded-full border border-[#2C5F2D] px-5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-[#2C5F2D] transition hover:bg-[#2C5F2D] hover:text-white"
+                className="cta-primary justify-center"
               >
                 Add to Calendar
               </a>

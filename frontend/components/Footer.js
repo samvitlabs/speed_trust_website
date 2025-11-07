@@ -6,7 +6,7 @@ const quickLinks = [
   { label: 'Courses', href: '/courses' },
   { label: 'Guidance', href: '/guidance' },
   { label: 'Impact', href: '/impact' },
-  { label: 'Gallery', href: '/gallery' },
+  { label: 'Media', href: '/media' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -55,7 +55,7 @@ function SocialIcon({ name }) {
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-brand-green)] text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-8 px-6 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr,1fr,1fr]">
         <section className="space-y-4">
           <p className="text-lg font-semibold">Speed Trust</p>
           <p className="text-sm text-white/80">
@@ -69,9 +69,9 @@ export default function Footer() {
           </p>
         </section>
 
-        <section>
+        <section className="space-y-4">
           <p className="text-lg font-semibold">Quick Links</p>
-          <ul className="mt-4 space-y-2 text-sm">
+          <ul className="grid grid-cols-2 gap-y-2 text-sm">
             {quickLinks.map((link) => (
               <li key={link.href}>
                 <Link

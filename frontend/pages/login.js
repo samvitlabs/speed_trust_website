@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import users from '../data/users.json';
 import { useAuth } from '../context/AuthContext';
 
 const initialForm = { email: '', password: '' };
@@ -23,20 +22,29 @@ export default function Login() {
     setError('');
     setIsSubmitting(true);
 
-    const matched = users.find(
-      (record) =>
-        record.email.toLowerCase() === formData.email.trim().toLowerCase() &&
-        record.password === formData.password
-    );
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email.trim(),
+          password: formData.password,
+        }),
+      });
 
-    if (!matched) {
-      setError('Invalid email or password');
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.message || 'Invalid email or password');
+      }
+
+      const nextUser = payload.user ?? { email: formData.email.trim() };
+      login(nextUser);
+      router.push('/user');
+    } catch (requestError) {
+      setError(requestError.message || 'Unable to sign in. Please retry.');
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    login({ email: matched.email, name: matched.name });
-    router.push('/user');
   };
 
   const disabled = !formData.email || !formData.password || isSubmitting;

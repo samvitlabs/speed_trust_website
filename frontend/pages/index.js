@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useCyclingIndex from '../hooks/useCyclingIndex';
 import newsData from '../data/news';
+import { chunkArray } from '../utils/array';
 
 const heroSlides = [
   {
@@ -17,6 +18,12 @@ const heroSlides = [
     image: 'https://images.unsplash.com/photo-1482192505345-5655af888cc4?auto=format&fit=crop&w=1600&q=80',
     tagline: 'Training educators, farmers, and youth to champion regenerative futures.',
   },
+];
+
+const heroPillars = [
+  'Registered Public Trust',
+  'Ecology-led field programs',
+  'Career & entrepreneurship guidance',
 ];
 
 const alternatingSections = [
@@ -151,14 +158,6 @@ const testimonials = [
 const testimonialSlides = chunkArray(testimonials, 3);
 const teamSlides = chunkArray(teamMembers, 4);
 
-function chunkArray(items, size) {
-  const result = [];
-  for (let i = 0; i < items.length; i += size) {
-    result.push(items.slice(i, i + size));
-  }
-  return result;
-}
-
 function AnimatedCounter({ value, duration = 1500, trigger = 0 }) {
   const [count, setCount] = useState(0);
 
@@ -280,7 +279,7 @@ export default function Home() {
   const handleTestimonialNav = (direction) => cycleTestimonial(direction);
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-slate-900">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden fade-in-up">
         {heroSlides.map((slide, index) => (
           <div
@@ -291,25 +290,34 @@ export default function Home() {
             style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             aria-hidden={index !== heroIndex}
           >
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 hero-overlay" />
             <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white fade-in-up" aria-live={index === heroIndex ? 'polite' : 'off'}>
-              <p className="text-xs uppercase tracking-[0.3em] text-white/70">Western Ghats Stewardship</p>
               <h1 className="mt-4 max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
                 Southern Pothigai Environmental and Educational Trust
               </h1>
               <p className="mt-6 max-w-3xl text-base text-white/80 sm:text-lg">{slide.tagline}</p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/80">
+                {heroPillars.map((pillar) => (
+                  <span
+                    key={pillar}
+                    className="rounded-full border border-white/30 bg-white/10 px-4 py-2 backdrop-blur-sm"
+                  >
+                    {pillar}
+                  </span>
+                ))}
+              </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/courses"
-                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-2xl"
+                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:shadow-2xl"
                 >
                   Explore Courses
                 </Link>
                 <Link
-                  href="/impact"
-                  className="rounded-full border border-white/60 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+                  href="/events"
+                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
                 >
-                  View Impact Stories
+                  Browse Events
                 </Link>
               </div>
             </div>
@@ -331,73 +339,78 @@ export default function Home() {
       </section>
 
       <section className="px-6 py-16 fade-in-up">
-        <div className="mx-auto max-w-6xl text-center">
-          <h2 className="text-4xl font-bold text-slate-900">News &amp; Updates</h2>
-        </div>
-        <div className="relative mx-auto mt-10 max-w-6xl">
-          <button
-            type="button"
-            onClick={() => handleNewsNav(-1)}
-            className={`absolute left-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
-              newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
-            }`}
-            aria-label="Previous news story"
-            disabled={newsSlides.length <= 1}
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNewsNav(1)}
-            className={`absolute right-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
-              newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
-            }`}
-            aria-label="Next news story"
-            disabled={newsSlides.length <= 1}
-          >
-            ›
-          </button>
+        <div className="mx-auto max-w-6xl rounded-[32px] border border-[var(--color-brand-green)]/10 bg-white/80 p-10 shadow-2xl shadow-[rgba(12,28,20,0.08)] backdrop-blur">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-brand-green)]">
+              Field Dispatches
+            </p>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">News &amp; Updates</h2>
+          </div>
+          <div className="relative mt-10">
+            <button
+              type="button"
+              onClick={() => handleNewsNav(-1)}
+              className={`absolute left-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
+                newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
+              }`}
+              aria-label="Previous news story"
+              disabled={newsSlides.length <= 1}
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNewsNav(1)}
+              className={`absolute right-0 top-1/2 z-10 flex -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition ${
+                newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
+              }`}
+              aria-label="Next news story"
+              disabled={newsSlides.length <= 1}
+            >
+              ›
+            </button>
 
-          {newsSlides.length ? (
-            <div className="overflow-hidden rounded-3xl bg-transparent">
-              <div
-                className="flex transition-transform duration-500"
-                style={{ transform: `translateX(-${newsIndex * 100}%)` }}
-              >
-                {newsSlides.map((slide, slideIndex) => (
-                  <div key={`news-slide-${slideIndex}`} className="w-full flex-shrink-0 px-2 sm:px-4">
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                      {slide.map((item) => (
-                        <article key={item.id} className="h-full">
-                          <div className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                            <div className="h-48 w-full overflow-hidden">
-                              <div
-                                className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                                style={{ backgroundImage: `url(${item.image})` }}
-                                role="img"
-                                aria-label={item.title}
-                              />
+            {newsSlides.length ? (
+              <div className="overflow-hidden rounded-3xl bg-transparent">
+                <div
+                  className="flex transition-transform duration-500"
+                  style={{ transform: `translateX(-${newsIndex * 100}%)` }}
+                >
+                  {newsSlides.map((slide, slideIndex) => (
+                    <div key={`news-slide-${slideIndex}`} className="w-full flex-shrink-0 px-2 sm:px-4">
+                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {slide.map((item) => (
+                          <article key={item.id} className="h-full">
+                            <div className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                              <div className="h-48 w-full overflow-hidden">
+                                <div
+                                  className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                  style={{ backgroundImage: `url(${item.image})` }}
+                                  role="img"
+                                  aria-label={item.title}
+                                />
+                              </div>
+                              <div className="space-y-3 px-6 py-6">
+                                <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">{item.date}</p>
+                                <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+                                <p className="text-base text-slate-600">{item.summary}</p>
+                              </div>
                             </div>
-                            <div className="space-y-3 px-6 py-6">
-                              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">{item.date}</p>
-                              <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-                              <p className="text-base text-slate-600">{item.summary}</p>
-                            </div>
-                          </div>
-                        </article>
-                      ))}
+                          </article>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ) : (
-            <p className="mt-6 text-center text-slate-500">News updates coming soon.</p>
-          )}
+            ) : (
+              <p className="mt-6 text-center text-slate-500">News updates coming soon.</p>
+            )}
+          </div>
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-cream)] px-6 py-16 fade-in-up">
         <div className="mx-auto max-w-6xl space-y-16">
           {alternatingSections.map((section, index) => (
             <article
@@ -407,24 +420,22 @@ export default function Home() {
                   highlightRefs.current[index] = element;
                 }
               }}
-              className={`reveal-card flex flex-col gap-10 lg:flex-row lg:items-center ${
+              className={`reveal-card flex flex-col gap-10 rounded-[32px] bg-transparent px-2 py-4 transition duration-500 lg:flex-row lg:items-center lg:px-4 ${
                 index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
               }`}
             >
-              <div className="flex-1 space-y-4">
+              <div className="flex-1 space-y-4 rounded-[28px] border border-transparent bg-white/40 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md">
+      
                 <h3 className="text-3xl font-semibold text-slate-900">{section.title}</h3>
-                <p className="text-base text-slate-600">{section.copy}</p>
-                <Link
-                  href={section.cta}
-                  className="inline-flex items-center rounded-full bg-[var(--color-brand-green)] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition hover:-translate-y-0.5"
-                >
+                <p className="text-base text-slate-700">{section.copy}</p>
+                <Link href={section.cta} className="cta-primary">
                   Learn More
                   <span className="ml-2" aria-hidden>
                     →
                   </span>
                 </Link>
               </div>
-              <div className="flex-1 overflow-hidden rounded-3xl shadow-lg">
+              <div className="flex-1 overflow-hidden rounded-3xl border border-white/30 shadow-[0_30px_50px_rgba(12,28,20,0.12)]">
                 <div
                   className="h-72 w-full bg-cover bg-center"
                   style={{ backgroundImage: `url(${section.image})` }}
@@ -437,25 +448,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={impactRef} className="px-6 py-16 fade-in-up">
+      <section ref={impactRef} className="section-canopy px-6 py-16 fade-in-up">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
           {impactMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="rounded-3xl bg-white p-8 text-center shadow-lg transition duration-300 hover:-translate-y-1"
+              className="metric-card rounded-3xl p-8 text-center transition duration-300 hover:-translate-y-1"
               style={{ '--animation-delay': `${index * 60}ms` }}
             >
-              <p className="text-4xl font-bold text-[var(--color-brand-green)]">
+              <p className="text-4xl font-bold">
                 <AnimatedCounter value={metric.value} trigger={impactTrigger} />
                 {metric.suffix}
               </p>
-              <p className="mt-3 text-sm uppercase tracking-wide text-slate-500">{metric.label}</p>
+              <p className="mt-3 text-xs uppercase tracking-[0.35em] text-[var(--color-brand-mist)]">{metric.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-mist)] px-6 py-16 fade-in-up">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-4xl font-bold text-slate-900">Partners</h2>
           <div className="mt-12 overflow-hidden">
@@ -463,7 +474,7 @@ export default function Home() {
               {[...partnerLogos, ...partnerLogos].map((partner, index) => (
                 <div
                   key={`${partner.name}-${index}`}
-                  className="flex h-24 w-48 flex-shrink-0 items-center justify-center rounded-2xl bg-[var(--color-brand-cream)] shadow-sm"
+                  className="flex h-24 w-48 flex-shrink-0 items-center justify-center rounded-2xl border border-[var(--color-brand-green)]/15 bg-white text-[var(--color-brand-muted)] shadow-sm"
                 >
                   <Image src={partner.logo} alt={partner.name} width={160} height={64} className="h-12 w-auto object-contain" />
                 </div>
@@ -494,7 +505,7 @@ export default function Home() {
           </p>
         </div>
         <div className="relative mx-auto mt-10 max-w-6xl">
-          <div className="overflow-hidden">
+          <div className="overflow-visible pb-4">
             <div
               className="flex transition-transform duration-500"
               style={{ transform: `translateX(-${teamIndex * 100}%)` }}
@@ -505,7 +516,7 @@ export default function Home() {
                     {slide.map((member) => (
                       <article
                         key={member.name}
-                        className="rounded-3xl bg-white p-6 text-center shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                        className="rounded-3xl bg-white p-6 text-center shadow-xl shadow-[rgba(12,28,20,0.12)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_35px_60px_rgba(12,28,20,0.2)]"
                       >
                         <div className="mx-auto h-32 w-32 overflow-hidden rounded-full">
                           <div
@@ -542,7 +553,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 fade-in-up">
+      <section className="bg-[var(--color-brand-cream)] px-6 py-16 fade-in-up">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-bold text-slate-900">Testimonials</h2>
         </div>
@@ -556,7 +567,7 @@ export default function Home() {
             >
               ‹
             </button>
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-visible pb-4">
               <div
                 className="flex transition-transform duration-500"
                 style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
@@ -567,12 +578,12 @@ export default function Home() {
                       {slide.map((testimonial, index) => (
                         <article
                           key={testimonial.name}
-                          className="rounded-3xl bg-[var(--color-brand-cream)] p-6 text-slate-700 shadow-sm transition duration-300 hover:-translate-y-1"
+                          className="rounded-3xl border border-[var(--color-brand-green)]/10 bg-white p-6 text-[var(--color-brand-muted)] shadow-lg shadow-[rgba(12,28,20,0.08)] transition duration-300 hover:-translate-y-1"
                           style={{ '--animation-delay': `${index * 60}ms` }}
                         >
-                          <p className="text-base text-slate-600">“{testimonial.message}”</p>
-                          <p className="mt-4 text-base font-semibold text-slate-900">{testimonial.name}</p>
-                          <p className="text-sm text-slate-500">{testimonial.role}</p>
+                          <p className="text-base text-[var(--color-brand-muted)]">“{testimonial.message}”</p>
+                          <p className="mt-4 text-base font-semibold text-[var(--color-brand-slate)]">{testimonial.name}</p>
+                          <p className="text-sm text-[var(--color-brand-green)]">{testimonial.role}</p>
                         </article>
                       ))}
                     </div>

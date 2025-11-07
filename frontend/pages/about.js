@@ -25,9 +25,24 @@ const timeline = [
   },
 ];
 
+const guidingStatements = [
+  {
+    label: 'Mission',
+    title: 'Hold space for communities to heal land and livelihoods',
+    body:
+      'As a registered public trust we convene farmers, teachers, and youth to co-create data-informed stewardship plans. We pair ecological science with cultural memory so every program restores rivers, soils, and dignity in equal measure.',
+  },
+  {
+    label: 'Vision',
+    title: 'Western Ghats commons stewarded by trusted local guardians',
+    body:
+      'We imagine a future where every panchayat hosts its own learning commons, where transparent trust-led governance unlocks green entrepreneurship, and where intergenerational councils keep forests, careers, and culture in balance.',
+  },
+];
+
 export default function About() {
   return (
-    <main className="bg-[#F9F9F9] text-slate-900">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section
         className="relative h-[60vh] min-h-[420px] w-full bg-cover bg-center"
         style={{
@@ -50,29 +65,22 @@ export default function About() {
       </section>
 
       <section className="px-6 py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
-          <article className="rounded-2xl border border-white/60 bg-white p-8 shadow-sm">
-            <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Mission</p>
-            <h2 className="mt-3 text-3xl font-semibold text-[#2C5F2D]">Cultivate ecological guardianship</h2>
-            <p className="mt-4 text-base text-slate-600">
-              We design joyful, data-informed experiences that help communities read their landscapes, revive biodiversity, and center indigenous knowledge in every decision. Our mission is to weave science, art, and civic action so that each watershed becomes its own mentor.
-            </p>
-          </article>
-          <article className="rounded-2xl border border-white/60 bg-white p-8 shadow-sm">
-            <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Vision</p>
-            <h2 className="mt-3 text-3xl font-semibold text-[#2C5F2D]">Resilient Western Ghats communities</h2>
-            <p className="mt-4 text-base text-slate-600">
-              We envision a bio-cultural corridor where schools, farms, and panchayats share open knowledge, restore commons, and nurture livelihoods that honor rivers, forests, and people equally.
-            </p>
-          </article>
+        <div className="mx-auto max-w-4xl space-y-10">
+          {guidingStatements.map((statement) => (
+            <div key={statement.label} className="space-y-3 text-center">
+              <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">{statement.label}</h2>
+              <p className="text-lg font-medium text-[var(--color-brand-slate)]">{statement.title}</p>
+              <p className="text-base text-[var(--color-brand-muted)]">{statement.body}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="bg-white px-6 py-16">
-        <div className="mx-auto max-w-6xl grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
           <div className="space-y-4">
-            <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">How we influence society</p>
-            <h2 className="text-3xl font-bold text-[#2C5F2D]">
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">How we influence society</p>
+            <h2 className="text-3xl font-bold text-[var(--color-brand-green)]">
               Learning labs that ripple into policy, livelihoods, and culture
             </h2>
             <p className="text-base text-slate-600">
@@ -96,13 +104,13 @@ export default function About() {
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Journey Timeline</p>
-          <h2 className="mt-3 text-3xl font-bold text-[#2C5F2D]">Milestones rooted in community trust</h2>
-          <div className="mt-10 space-y-6 border-l-2 border-[#2C5F2D]/40 pl-6">
+          <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Journey Timeline</p>
+          <h2 className="mt-3 text-3xl font-bold text-[var(--color-brand-green)]">Milestones rooted in community trust</h2>
+          <div className="mt-10 space-y-6 border-l-2 border-[var(--color-brand-green)]/40 pl-6">
             {timeline.map((entry) => (
               <article key={entry.year} className="relative pl-6">
-                <span className="absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-[#F9F9F9] bg-[#2C5F2D]" aria-hidden />
-                <p className="text-sm font-semibold uppercase tracking-wide text-[#2C5F2D]">{entry.year}</p>
+                <span className="absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-[var(--color-brand-cream)] bg-[var(--color-brand-green)]" aria-hidden />
+                <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-brand-green)]">{entry.year}</p>
                 <h3 className="text-2xl font-semibold text-slate-900">{entry.title}</h3>
                 <p className="mt-2 text-base text-slate-600">{entry.description}</p>
               </article>

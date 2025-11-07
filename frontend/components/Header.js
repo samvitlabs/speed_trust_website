@@ -4,17 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const navLinks = [
-  'Home',
-  'About',
-  'Events',
-  'Courses',
-  'Guidance',
-  'Impact',
-  'Gallery',
-  'Contact',
-  'Login',
-];
+const navLinks = ['Home', 'About', 'Events', 'Courses', 'Guidance', 'Media', 'Contact', 'Login'];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +28,7 @@ export default function Header() {
         {label === 'Login' ? (
           <Link
             href="/login"
-            className={`block rounded-full bg-[var(--color-brand-gold)] text-center font-semibold text-[var(--color-brand-green)] transition-colors hover:bg-[#f97316] ${
+            className={`block rounded-full bg-[var(--color-brand-coral)] text-center font-semibold text-white shadow-md transition hover:bg-[#a4522f] ${
               compact ? 'px-3 py-1 text-sm' : 'px-4 py-2 text-base'
             }`}
             onClick={onClick}

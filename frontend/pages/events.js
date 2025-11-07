@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 
 const pastEventSlides = [
@@ -98,6 +98,14 @@ const upcomingEvents = [
 
 export default function Events() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [page, setPage] = useState(0);
+  const eventsPerPage = 4;
+  const totalPages = Math.ceil(completedEvents.length / eventsPerPage);
+
+  const paginatedEvents = useMemo(() => {
+    const start = page * eventsPerPage;
+    return completedEvents.slice(start, start + eventsPerPage);
+  }, [page]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -111,7 +119,7 @@ export default function Events() {
   };
 
   return (
-    <main className="bg-[#F9F9F9] text-slate-900">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
         {pastEventSlides.map((slide, index) => (
           <div
@@ -164,7 +172,7 @@ export default function Events() {
 
       <section className="px-6 py-12">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl font-bold text-[#2C5F2D]">Collective journeys for ecological justice</h2>
+          <h2 className="text-3xl font-bold text-[var(--color-brand-green)]">Collective journeys for ecological justice</h2>
           <p className="mt-4 text-base text-slate-600">
             From riparian clean-ups to maker festivals, Speed Trust gatherings blend science, indigenous wisdom, art, and policy action so every participant returns home as an ambassador for the Western Ghats.
           </p>
@@ -172,65 +180,82 @@ export default function Events() {
       </section>
 
       <section className="px-6 pb-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[2fr_1fr]">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_1.3fr]">
           <div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Completed Events</p>
+                <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Completed Events</p>
                 <h3 className="text-3xl font-semibold text-slate-900">What we accomplished together</h3>
               </div>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
-              {completedEvents.map((event) => (
-                <article key={event.slug} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              {paginatedEvents.map((event) => (
+                <Link
+                  key={event.slug}
+                  href={`/events/${event.slug}`}
+                  className="group block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-green)]"
+                >
                   <div
-                    className="h-48 w-full bg-cover bg-center"
+                    className="h-48 w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(${event.image})` }}
                     role="img"
                     aria-label={`${event.title} image`}
                   />
                   <div className="space-y-3 p-5">
-                    <p className="text-sm font-semibold uppercase tracking-wide text-[#2C5F2D]">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-brand-green)]">
                       {event.date} • {event.location}
                     </p>
                     <h4 className="text-xl font-semibold text-slate-900">{event.title}</h4>
                     <p className="text-sm text-slate-600">{event.summary}</p>
-                    <Link
-                      href={`/events/${event.slug}`}
-                      className="inline-flex items-center text-sm font-semibold text-[#2C5F2D]"
-                    >
-                      Learn More
-                      <span className="ml-2" aria-hidden>
-                        →
-                      </span>
-                    </Link>
                   </div>
-                </article>
+                </Link>
               ))}
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-3 text-sm">
+              <button
+                type="button"
+                onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+                className="rounded-full border border-slate-300 px-3 py-1 text-slate-600 transition hover:border-[var(--color-brand-green)] hover:text-[var(--color-brand-green)] disabled:cursor-not-allowed disabled:opacity-40"
+                disabled={page === 0}
+              >
+                Prev
+              </button>
+              <span className="text-slate-500">
+                Page {page + 1} of {totalPages}
+              </span>
+              <button
+                type="button"
+                onClick={() => setPage((prev) => Math.min(prev + 1, totalPages - 1))}
+                className="rounded-full border border-slate-300 px-3 py-1 text-slate-600 transition hover:border-[var(--color-brand-green)] hover:text-[var(--color-brand-green)] disabled:cursor-not-allowed disabled:opacity-40"
+                disabled={page >= totalPages - 1}
+              >
+                Next
+              </button>
             </div>
           </div>
 
-          <aside className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div>
-              <p className="text-sm uppercase tracking-wide text-[#2C5F2D]">Upcoming</p>
-              <h3 className="text-2xl font-semibold text-slate-900">Join the next wave</h3>
+          <aside className="rounded-[32px] border border-[var(--color-brand-green)]/15 bg-white/90 p-6 text-[var(--color-brand-slate)] shadow-[0_25px_45px_rgba(12,28,20,0.08)] backdrop-blur">
+            <div className="space-y-2 text-left">
+              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]/80">Upcoming</p>
+              <h3 className="text-2xl font-semibold text-[var(--color-brand-green)]">Join the next wave</h3>
             </div>
-            <div className="space-y-6">
-              {upcomingEvents.map((event) => (
-                <div key={event.slug} className="rounded-xl border border-slate-100 bg-brand-background p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#2C5F2D]">{event.date}</p>
-                  <p className="mt-1 text-base font-semibold text-slate-900">{event.title}</p>
-                  <p className="text-sm text-slate-500">{event.location}</p>
-                  <p className="mt-2 text-sm text-slate-600">{event.summary}</p>
-                  <Link
-                    href={`/events/${event.slug}`}
-                    className="mt-3 inline-flex items-center text-sm font-semibold text-[#2C5F2D]"
-                  >
-                    Learn More
-                    <span className="ml-1" aria-hidden>
-                      →
+            <div className="mt-4 space-y-5">
+              {upcomingEvents.map((event, index) => (
+                <div
+                  key={event.slug}
+                  className="space-y-3 rounded-2xl border border-[var(--color-brand-green)]/10 bg-[var(--color-brand-cream)]/70 p-4 shadow-sm"
+                >
+                  <div className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-[var(--color-brand-green)]/70">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-brand-green)]/10 text-sm text-[var(--color-brand-green)]">
+                      {index + 1}
                     </span>
-                  </Link>
+                    <span className="font-sans text-[0.9rem] tracking-[0.2em] text-[var(--color-brand-green)]">
+                      {event.date}
+                    </span>
+                  </div>
+                  <p className="text-base font-semibold text-[var(--color-brand-slate)]">{event.title}</p>
+                  <p className="text-sm text-[var(--color-brand-muted)]">{event.location}</p>
+                  <p className="text-sm text-[var(--color-brand-muted)]">{event.summary}</p>
                 </div>
               ))}
             </div>

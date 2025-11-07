@@ -46,10 +46,10 @@ export default function Contact() {
   };
 
   return (
-    <main className="bg-[#F9F9F9] text-slate-900">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="px-6 py-16">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-[#458C96]">Contact</p>
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Contact</p>
           <h1 className="mt-4 text-4xl font-bold">Connect with Southern Pothigai Trust</h1>
           <p className="mt-4 text-base text-slate-600">
             Share your ideas on conservation, collaborations, or community learning—we would love to hear from you.
@@ -61,23 +61,23 @@ export default function Contact() {
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
             <div>
-              <p className="text-sm uppercase tracking-wide text-[#458C96]">Visit us</p>
+              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Visit us</p>
               <p className="mt-2 text-base text-slate-600">{info.address}</p>
             </div>
             <div>
-              <p className="text-sm uppercase tracking-wide text-[#458C96]">Call</p>
+              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Call</p>
               <a href={`tel:${info.phone}`} className="mt-2 block text-base font-semibold text-slate-900">
                 {info.phone}
               </a>
             </div>
             <div>
-              <p className="text-sm uppercase tracking-wide text-[#458C96]">Email</p>
+              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Email</p>
               <a href={`mailto:${info.email}`} className="mt-2 block text-base font-semibold text-slate-900">
                 {info.email}
               </a>
             </div>
             <div>
-              <p className="text-sm uppercase tracking-wide text-[#458C96]">Office Hours</p>
+              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Office Hours</p>
               <p className="mt-2 text-base text-slate-600">{info.hours}</p>
             </div>
             <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
@@ -89,7 +89,7 @@ export default function Contact() {
           </article>
 
           <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-            <p className="text-sm uppercase tracking-wide text-[#458C96]">Write to us</p>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Write to us</p>
             <h2 className="mt-2 text-3xl font-semibold text-slate-900">Send a message</h2>
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <label className="text-sm font-medium text-slate-600">
