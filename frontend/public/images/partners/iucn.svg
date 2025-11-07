@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <rect width="200" height="80" rx="16" fill="#eff6ff" />
+  <circle cx="45" cy="40" r="20" stroke="#1d4ed8" stroke-width="6" fill="none" />
+  <text x="90" y="48" font-family="'Inter', sans-serif" font-size="28" font-weight="700" fill="#1d4ed8">IUCN</text>
+</svg>

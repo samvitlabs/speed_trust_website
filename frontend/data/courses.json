@@ -1,0 +1,92 @@
+[
+  {
+    "id": "watershed-mapping-lab",
+    "title": "Watershed Mapping Lab",
+    "description": "Hands-on GIS, drone mapping, and participatory surveying for rural water security teams.",
+    "institution": "Speed Trust Learning Commons",
+    "domain": "Hydrology",
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/watershed-mapping"
+  },
+  {
+    "id": "living-soils-intensive",
+    "title": "Living Soils Intensive",
+    "description": "Soil microbiology, composting systems, and regenerative cropping tailored for smallholders.",
+    "institution": "TNAU x Speed Trust",
+    "domain": "Agroecology",
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/living-soils"
+  },
+  {
+    "id": "eco-education-design-studio",
+    "title": "Eco-Education Design Studio",
+    "description": "Curriculum prototyping sprint for educators blending storytelling, robotics, and citizen science.",
+    "institution": "Azim Premji University Hub",
+    "domain": "Education",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/eco-edu-studio"
+  },
+  {
+    "id": "forest-commons-fellowship",
+    "title": "Forest Commons Fellowship",
+    "description": "Multi-month mentorship on community forestry, carbon literacy, and policy dialogues.",
+    "institution": "Keystone Foundation Residency",
+    "domain": "Forestry",
+    "image": "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/forest-commons"
+  },
+  {
+    "id": "climate-story-lab",
+    "title": "Climate Story Lab",
+    "description": "Narrative strategy for filmmakers, podcasters, and youth media collectives amplifying frontline stories.",
+    "institution": "ATREE Media Lab",
+    "domain": "Storytelling",
+    "image": "https://images.unsplash.com/photo-1475688621402-4257f5b911ef?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/climate-story"
+  },
+  {
+    "id": "riparian-design-build",
+    "title": "Riparian Design-Build Sprint",
+    "description": "Interdisciplinary studio prototyping nature-based infrastructure and art along riverbanks.",
+    "institution": "IIT Madras CSR",
+    "domain": "Urban Ecology",
+    "image": "https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/riparian-design"
+  },
+  {
+    "id": "youth-earth-exchange",
+    "title": "Youth Earth Exchange",
+    "description": "Semester-long peer learning for students leading campus sustainability projects.",
+    "institution": "Speed Trust + Schools Network",
+    "domain": "Youth Leadership",
+    "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/youth-earth"
+  },
+  {
+    "id": "community-air-lab",
+    "title": "Community Air Lab",
+    "description": "Makerspace training to build sensors, map air quality, and negotiate local clean air plans.",
+    "institution": "Open Climate Labs",
+    "domain": "Citizen Science",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/community-air"
+  },
+  {
+    "id": "regenerative-enterprise-builder",
+    "title": "Regenerative Enterprise Builder",
+    "description": "Business modeling coaching for farmer producer companies, artisans, and eco-tourism collectives.",
+    "institution": "Speed Trust Impact Studio",
+    "domain": "Social Entrepreneurship",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/regenerative-enterprise"
+  },
+  {
+    "id": "blue-schools-lab",
+    "title": "Blue Schools Lab",
+    "description": "Design thinking bootcamp to reimagine campus water systems, wetlands, and climate-adaptive curricula.",
+    "institution": "Speed Trust Learning Commons",
+    "domain": "Education",
+    "image": "https://images.unsplash.com/photo-1469474203909-7f1481f54c1d?auto=format&fit=crop&w=900&q=80",
+    "link": "https://example.org/enroll/blue-schools"
+  }
+]

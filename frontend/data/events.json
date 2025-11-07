@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "watershed-guardians-residency",
+    "title": "Watershed Guardians Residency",
+    "location": "Courtallam, Tamil Nadu",
+    "date": "May 12 – 17, 2024",
+    "heroImage": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
+    "description": "Six immersive days where hydrologists, GIS mentors, and panchayat leaders trained fellows to map aquifers, revive springs, and design policy pitches for their villages.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "startDate": "2024-05-12T09:00:00+05:30",
+    "endDate": "2024-05-17T17:00:00+05:30"
+  },
+  {
+    "slug": "eco-edu-hackathon",
+    "title": "Eco-Edu Hackathon",
+    "location": "Tenkasi, Tamil Nadu",
+    "date": "March 2 – 3, 2024",
+    "heroImage": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
+    "description": "Educators, artists, and students co-designed curriculum kits blending robotics, folklore, and community science to inspire climate literacy.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "startDate": "2024-03-02T10:00:00+05:30",
+    "endDate": "2024-03-03T18:00:00+05:30"
+  },
+  {
+    "slug": "riparian-weave-festival",
+    "title": "Riparian Weave Festival",
+    "location": "Ambasamudram",
+    "date": "January 20, 2024",
+    "heroImage": "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1600&q=80",
+    "description": "Weaving cooperatives, youth theaters, and scientists celebrated river stories through installations, open mics, and mapping labs.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1482192597420-4817fdd7e8b0?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1475688621402-4257f5b911ef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "startDate": "2024-01-20T15:00:00+05:30",
+    "endDate": "2024-01-20T20:00:00+05:30"
+  }
+]
