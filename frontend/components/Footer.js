@@ -58,15 +58,21 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-8 px-6 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr,1fr,1fr]">
         <section className="space-y-4">
           <p className="text-lg font-semibold">Speed Trust</p>
-          <p className="text-sm text-white/80">
+          <p className="text-sm text-white/80 leading-none">
             Southern Pothigai Environmental &amp; Educational Trust
           </p>
-          <p className="text-sm text-white/80">
-            45, Evergreen Road, Tenkasi District, Tamil Nadu 627412
+          <p className="text-sm text-white/80 leading-none">
+            11-12, Premalayam, Sri Jeyanthi Nagar,
           </p>
-          <p className="text-sm text-white/80">
+            <p className="text-sm text-white/80 leading-none">
+            KTC Nagar, Tirunelveli - 627007, Tamil Nadu, India
+          </p>
+            <p className="text-sm text-white/80 leading-none">
+            Tamil Nadu, India
+          </p>
+          {/* <p className="text-sm text-white/80">
             +91-98765-43210<br />contact@southernpothigai.org
-          </p>
+          </p> */}
         </section>
 
         <section className="space-y-4">
