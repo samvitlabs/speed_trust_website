@@ -5,10 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = ['Home', 'About', 'Events', 'Courses', 'Guidance', 'Media', 'Contact', 'Login'];
+const languages = [
+  { code: 'en', label: 'EN', ariaLabel: 'English' },
+  { code: 'ta', label: 'த', ariaLabel: 'Tamil' },
+];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [language, setLanguage] = useState('en');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,10 +76,28 @@ export default function Header() {
             <span className="text-lg font-semibold tracking-wide">SPEED Trust</span>
           </Link>
 
-          <div className="ml-auto hidden lg:block">
-            <nav aria-label="Primary navigation">
+          <div className="ml-auto hidden items-start gap-6 lg:flex">
+            <nav aria-label="Primary navigation" className="flex-1">
               <ul className="flex items-center gap-4 font-medium">{renderNavLinks(undefined, { compact: true })}</ul>
             </nav>
+            <div className="flex items-center gap-1 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
+              {languages.map((option) => (
+                <button
+                  key={option.code}
+                  type="button"
+                  onClick={() => setLanguage(option.code)}
+                  className={`rounded-full px-3 py-1 transition ${
+                    language === option.code
+                      ? 'bg-white text-[var(--color-brand-green)]'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                  aria-pressed={language === option.code}
+                  aria-label={option.ariaLabel}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <button
@@ -99,13 +122,33 @@ export default function Header() {
         </div>
 
         <nav id="primary-navigation" className={`lg:hidden ${isScrolled ? 'pt-2' : 'pt-3'}`} aria-label="Mobile primary navigation">
-          <ul
-            className={`flex flex-col gap-1 overflow-hidden text-base font-medium text-white transition-all duration-300 ${
-              menuOpen ? 'max-h-[600px]' : 'max-h-0'
+          <div
+            className={`flex flex-col gap-3 overflow-hidden text-base font-medium text-white transition-all duration-300 ${
+              menuOpen ? 'max-h-[600px] pb-4' : 'max-h-0'
             }`}
           >
-            {renderNavLinks(() => setMenuOpen(false))}
-          </ul>
+            <div className="flex gap-2 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
+              {languages.map((option) => (
+                <button
+                  key={option.code}
+                  type="button"
+                  onClick={() => setLanguage(option.code)}
+                  className={`rounded-full px-3 py-1 transition ${
+                    language === option.code
+                      ? 'bg-white text-[var(--color-brand-green)]'
+                      : 'text-white/70'
+                  }`}
+                  aria-pressed={language === option.code}
+                  aria-label={option.ariaLabel}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <ul className="flex flex-col gap-1">
+              {renderNavLinks(() => setMenuOpen(false))}
+            </ul>
+          </div>
         </nav>
       </div>
     </header>

@@ -27,15 +27,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/events": [
+    "/courses": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/events.js"
+      "static/chunks/pages/courses.js"
     ],
-    "/events/[slug]": [
+    "/guidance": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/events/[slug].js"
+      "static/chunks/pages/guidance.js"
     ]
   },
   "ampFirstPages": []
