@@ -65,7 +65,7 @@ export default function Footer() {
             11-12, Premalayam, Sri Jeyanthi Nagar,
           </p>
             <p className="text-sm text-white/80 leading-none">
-            KTC Nagar, Tirunelveli - 627007, Tamil Nadu, India
+            KTC Nagar, Tirunelveli - 627007
           </p>
             <p className="text-sm text-white/80 leading-none">
             Tamil Nadu, India
