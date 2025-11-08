@@ -51,7 +51,7 @@ const alternatingSections = [
 ];
 
 const impactMetrics = [
-  { label: 'Native Trees Planted', value: 180000, suffix: '+' },
+  { label: 'Native Trees Planted', value: 10000, suffix: '+' },
   { label: 'Rivers & Streams Revived', value: 14, suffix: '' },
   { label: 'Courses Delivered', value: 120, suffix: '+' },
 ];
@@ -67,52 +67,52 @@ const partnerLogos = [
 
 const teamMembers = [
   {
-    name: 'Dr. Lalitha Nadarajan',
-    role: 'Founder & Ecologist',
-    bio: 'Forest hydrologist with 18 years of watershed restoration work across the Western Ghats.',
-    image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80',
+    name: 'Prof. Dr. T. Arumugam',
+    role: 'Vice Chancellor, Thiruvalluvar University',
+    bio: 'Eminent horticulturist with 32 years’ experience, released 11 crop varieties and authored 22 books.',
+    image: '/images/teams/founder.png',
   },
   {
     name: 'Arvind Seshadri',
     role: 'Programs Director',
     bio: 'Designs immersive curricula blending ethnobotany, systems thinking, and maker education.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Parvathi Raj',
     role: 'Community Partnerships',
     bio: 'Facilitates panchayat alliances and youth fellowships across five districts.',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Sameer Khan',
     role: 'Impact & Data Lead',
     bio: 'Tracks ecological baselines and builds open data dashboards for shared accountability.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Kavya Menon',
     role: 'Learning Experience Lead',
     bio: 'Architects playful learning journeys that connect classrooms with field labs.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Ravi Subramanian',
     role: 'Operations & Logistics',
     bio: 'Keeps our mobile labs, nurseries, and maker vans humming across three states.',
-    image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Mira Thomas',
     role: 'Storytelling Lead',
     bio: 'Transforms monitoring data into accessible narratives for donors and communities.',
-    image: 'https://images.unsplash.com/photo-1525130413817-d45c1d127c42?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
   {
     name: 'Dhanush Kumar',
     role: 'Field Technologist',
     bio: 'Deploys IoT sensors and open-source dashboards for watershed guardians.',
-    image: 'https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?auto=format&fit=crop&w=600&q=80',
+    image: '/images/teams/member1.png',
   },
 ];
 
@@ -309,7 +309,7 @@ export default function Home() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/courses"
-                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:shadow-2xl"
+                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
                 >
                   Explore Courses
                 </Link>
