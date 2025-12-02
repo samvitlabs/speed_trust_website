@@ -62,7 +62,7 @@ export default function Footer() {
             Southern Pothigai Environmental &amp; Educational Trust
           </p>
           <p className="text-sm text-white/80 leading-none">
-            11-12, Premalayam, Sri Jeyanthi Nagar,
+            11-12, Premalayam, Sri Jeyanthi Nagar,(Near Sarada College)
           </p>
             <p className="text-sm text-white/80 leading-none">
             KTC Nagar, Tirunelveli - 627007

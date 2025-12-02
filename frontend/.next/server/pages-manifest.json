@@ -2,9 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/events": "pages/events.js",
-  "/api/news": "pages/api/news.js",
-  "/courses": "pages/courses.js",
-  "/guidance": "pages/guidance.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/about": "pages/about.js",
+  "/our-work": "pages/our-work.js",
+  "/get-involved": "pages/get-involved.js"
 }

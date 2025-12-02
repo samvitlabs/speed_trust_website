@@ -1,615 +1,158 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useCyclingIndex from '../hooks/useCyclingIndex';
-import newsData from '../data/news';
-import { chunkArray } from '../utils/array';
+import useReveal from '../hooks/useReveal';
 
-const heroSlides = [
+const heroSlides = ['/images/about/1.png', '/images/about/2.png', '/images/about/3.png'];
+const focusHighlights = [
   {
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80',
-    tagline: 'Working with Western Ghats communities to restore forests, rivers, and livelihoods.',
+    title: 'Environmental Protection & Ecosystem Restoration',
+    description: 'Tree plantations, waterbody rejuvenation, and habitat conservation that restore ecological balance.',
+    image: '/images/about/1.png',
   },
   {
-    image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80',
-    tagline: 'Hands-on eco-literacy labs that bring science, indigenous knowledge, and art together.',
+    title: 'Skill Development & Youth Empowerment',
+    description: 'Training, mentorship, and placements that help rural youth build sustainable careers.',
+    image: '/images/about/2.png',
   },
   {
-    image: 'https://images.unsplash.com/photo-1482192505345-5655af888cc4?auto=format&fit=crop&w=1600&q=80',
-    tagline: 'Training educators, farmers, and youth to champion regenerative futures.',
+    title: 'Sustainable Agriculture & Technological Integration',
+    description: 'Tech-enabled advisory for farmers to improve yields while protecting soil and water.',
+    image: '/images/about/3.png',
+  },
+  {
+    title: 'Community Awareness & Value-Based Education',
+    description: 'Campaigns and learning programs that build climate consciousness and responsible practices.',
+    image: '/images/about/3.png',
   },
 ];
 
-const heroPillars = [
-  'Registered Public Trust',
-  'Ecology-led field programs',
-  'Career & entrepreneurship guidance',
+const impactTargets = [
+  { title: 'Plant and nurture 1 million trees' },
+  { title: 'Train 10,000 rural youth' },
+  { title: 'Rejuvenate 100+ water bodies' },
+  { title: 'Establish sustainable livelihood clusters' },
 ];
-
-const alternatingSections = [
-  {
-    title: 'Events',
-    copy:
-      'Seasonal treks, clean-up drives, and data jams connect volunteers with field scientists to co-create local climate action.',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80',
-    cta: '/events',
-  },
-  {
-    title: 'Courses',
-    copy:
-      'From micro-credentials to year-long fellowships, our courses blend agroecology, indigenous knowledge, and maker education.',
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80',
-    cta: '/courses',
-  },
-  {
-    title: 'Expert Guidance',
-    copy:
-      'Institutions tap our advisory pods for watershed planning, carbon baselining, and community engagement toolkits.',
-    image: 'https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=1200&q=80',
-    cta: '/guidance',
-  },
-];
-
-const impactMetrics = [
-  { label: 'Native Trees Planted', value: 10000, suffix: '+' },
-  { label: 'Rivers & Streams Revived', value: 14, suffix: '' },
-  { label: 'Courses Delivered', value: 120, suffix: '+' },
-];
-
-const partnerLogos = [
-  { name: 'IIT Madras CSR', logo: '/images/partners/iit-madras.svg' },
-  { name: 'ATREE', logo: '/images/partners/atree.svg' },
-  { name: 'TNAU', logo: '/images/partners/tnau.svg' },
-  { name: 'Azim Premji University', logo: '/images/partners/azim-premji.svg' },
-  { name: 'Keystone Foundation', logo: '/images/partners/keystone.svg' },
-  { name: 'IUCN India', logo: '/images/partners/iucn.svg' },
-];
-
-const teamMembers = [
-  {
-    name: 'Prof. Dr. T. Arumugam',
-    role: 'Vice Chancellor, Thiruvalluvar University',
-    bio: 'Eminent horticulturist with 32 years’ experience, released 11 crop varieties and authored 22 books.',
-    image: '/images/teams/founder.png',
-  },
-  {
-    name: 'Arvind Seshadri',
-    role: 'Programs Director',
-    bio: 'Designs immersive curricula blending ethnobotany, systems thinking, and maker education.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Parvathi Raj',
-    role: 'Community Partnerships',
-    bio: 'Facilitates panchayat alliances and youth fellowships across five districts.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Sameer Khan',
-    role: 'Impact & Data Lead',
-    bio: 'Tracks ecological baselines and builds open data dashboards for shared accountability.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Kavya Menon',
-    role: 'Learning Experience Lead',
-    bio: 'Architects playful learning journeys that connect classrooms with field labs.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Ravi Subramanian',
-    role: 'Operations & Logistics',
-    bio: 'Keeps our mobile labs, nurseries, and maker vans humming across three states.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Mira Thomas',
-    role: 'Storytelling Lead',
-    bio: 'Transforms monitoring data into accessible narratives for donors and communities.',
-    image: '/images/teams/member1.png',
-  },
-  {
-    name: 'Dhanush Kumar',
-    role: 'Field Technologist',
-    bio: 'Deploys IoT sensors and open-source dashboards for watershed guardians.',
-    image: '/images/teams/member1.png',
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Bhavana Devi',
-    role: 'Teacher Fellow, Tirunelveli',
-    message:
-      'The fellowship reframed my science classroom—students now map soil microbes and document native lore with grandparents.',
-  },
-  {
-    name: 'Nikhil Krishnan',
-    role: 'Watershed Cohort Alum',
-    message:
-      'Mentors helped us build an aquifer atlas that convinced our panchayat to invest in recharge wells.',
-  },
-  {
-    name: 'Sahana Iyer',
-    role: 'Design Strategist, Partner Org',
-    message:
-      'Speed Trust translates complex field data into narratives communities can own and celebrate.',
-  },
-  {
-    name: 'Farmer Producer Co-op, Sengottai',
-    role: 'Course Participant',
-    message:
-      'Our growers shifted to regenerative rotations after the mobile lab demystified soil testing.',
-  },
-  {
-    name: 'Dr. Rahul Menon',
-    role: 'Hydrologist Mentor',
-    message:
-      'They connect academia with local stewards better than any organization I have mentored.',
-  },
-  {
-    name: 'Ayesha Parameshwar',
-    role: 'Youth Fellow',
-    message:
-      'I found my purpose working on riparian storytelling projects that center indigenous voices.',
-  },
-];
-
-const testimonialSlides = chunkArray(testimonials, 3);
-const teamSlides = chunkArray(teamMembers, 4);
-
-function AnimatedCounter({ value, duration = 1500, trigger = 0 }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (trigger === 0) {
-      return undefined;
-    }
-
-    let frame;
-    setCount(0);
-    const start = performance.now();
-
-    const step = (timestamp) => {
-      const progress = Math.min((timestamp - start) / duration, 1);
-      setCount(Math.floor(progress * value));
-      if (progress < 1) {
-        frame = requestAnimationFrame(step);
-      }
-    };
-
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [value, duration, trigger]);
-
-  const formatted = useMemo(() => new Intl.NumberFormat('en-IN').format(count), [count]);
-  return formatted;
-}
 
 export default function Home() {
-  const [newsItems, setNewsItems] = useState(newsData);
-  const newsSlides = useMemo(() => (newsItems.length ? chunkArray(newsItems, 3) : []), [newsItems]);
-  const highlightRefs = useRef([]);
-  const impactRef = useRef(null);
-  const [impactTrigger, setImpactTrigger] = useState(0);
-
-  const { index: heroIndex, goTo: goToHero } = useCyclingIndex(heroSlides.length, 6000);
-  const {
-    index: newsIndex,
-    cycle: cycleNews,
-    goTo: goToNews,
-  } = useCyclingIndex(Math.max(newsSlides.length, 1), 0);
-  const {
-    index: testimonialIndex,
-    cycle: cycleTestimonial,
-    goTo: goToTestimonial,
-  } = useCyclingIndex(testimonialSlides.length, 7000);
-  const { index: teamIndex, goTo: goToTeam } = useCyclingIndex(teamSlides.length, 6000);
+  useReveal();
+  const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchNews = async () => {
-      try {
-        const response = await fetch('/api/news');
-        const payload = await response.json();
-        if (isMounted && Array.isArray(payload.news)) {
-          setNewsItems(payload.news);
-        }
-      } catch (error) {
-        console.error('Unable to load news items', error);
-      }
-    };
-
-    fetchNews();
-    return () => {
-      isMounted = false;
-    };
+    const timer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    if (newsSlides.length && newsIndex >= newsSlides.length) {
-      goToNews(0);
-    }
-  }, [newsIndex, newsSlides.length, goToNews]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    highlightRefs.current.forEach((element) => {
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const node = impactRef.current;
-    if (!node) return undefined;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setImpactTrigger((prev) => prev + 1);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  const handleNewsNav = (direction) => {
-    if (newsSlides.length <= 1) return;
-    cycleNews(direction);
-  };
-
-  const handleTestimonialNav = (direction) => cycleTestimonial(direction);
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)] overflow-hidden">
-      <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden fade-in-up">
+    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+      <section className="relative overflow-hidden bg-cover bg-center hero-fade" data-reveal>
         {heroSlides.map((slide, index) => (
           <div
-            key={slide.tagline}
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              index === heroIndex ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-            }`}
-            style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            key={slide}
+            className={`absolute inset-0 transition-opacity duration-700 ${index === heroIndex ? 'opacity-100' : 'opacity-0'}`}
+            style={{ backgroundImage: `url('${slide}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             aria-hidden={index !== heroIndex}
-          >
-            <div className="absolute inset-0 hero-overlay" />
-            <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white fade-in-up sm:px-6" aria-live={index === heroIndex ? 'polite' : 'off'}>
-              <h1 className="mt-4 max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
-                Southern Pothigai Environmental and Educational Trust
-              </h1>
-              <p className="mt-6 max-w-3xl text-base text-white/80 sm:text-lg">{slide.tagline}</p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/80">
-                {heroPillars.map((pillar) => (
-                  <span
-                    key={pillar}
-                    className="rounded-full border border-white/30 bg-white/10 px-4 py-2 backdrop-blur-sm"
-                  >
-                    {pillar}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/courses"
-                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
-                >
-                  Explore Courses
-                </Link>
-                <Link
-                  href="/events"
-                  className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
-                >
-                  Browse Events
-                </Link>
-              </div>
-            </div>
-          </div>
+          />
         ))}
-
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-6xl flex-col items-start justify-center gap-6 px-6 py-16 text-white">
+          <p className="text-sm uppercase tracking-[0.35em] text-white/80">SPEED Trust</p>
+          <h1 className="max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
+            Southern Pothigai Environmental and Educational Development (SPEED) Trust
+          </h1>
+          <p className="max-w-3xl text-lg text-white/85">
+            Promoting environmental sustainability, value-based education, and livelihood development across South India.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/about"
+              className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-white/10"
+            >
+              Learn More
+            </Link>
+            <Link
+              href="/our-work"
+              className="rounded-full bg-white px-6 py-3 text-base font-semibold text-[var(--color-brand-slate)] transition transform hover:scale-105 hover:shadow-lg hover:bg-white/80"
+            >
+              Our Work
+            </Link>
+          </div>
+        </div>
         <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
           {heroSlides.map((_, index) => (
             <button
-              key={`hero-dot-${index}`}
+              key={index}
               type="button"
-              onClick={() => goToHero(index)}
-              className={`h-3 w-3 rounded-full ${index === heroIndex ? 'bg-white' : 'bg-white/40'}`}
-              aria-label={`Go to hero slide ${index + 1}`}
-              aria-pressed={index === heroIndex}
+              onClick={() => setHeroIndex(index)}
+              className={`h-3 w-3 rounded-full transition ${index === heroIndex ? 'bg-white' : 'bg-white/50'}`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </section>
 
-      <section className="px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto max-w-6xl rounded-[32px] border border-[var(--color-brand-green)]/10 bg-white/80 p-6 shadow-2xl shadow-[rgba(12,28,20,0.08)] backdrop-blur sm:p-10">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-brand-green)]">
-              Field Dispatches
-            </p>
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">News &amp; Updates</h2>
-          </div>
-          <div className="relative mt-10">
-            <button
-              type="button"
-              onClick={() => handleNewsNav(-1)}
-              className={`absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition sm:flex ${
-                newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
-              }`}
-              aria-label="Previous news story"
-              disabled={newsSlides.length <= 1}
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              onClick={() => handleNewsNav(1)}
-              className={`absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-slate-200 bg-white/80 p-3 text-slate-700 shadow-lg transition sm:flex ${
-                newsSlides.length <= 1 ? 'cursor-not-allowed opacity-30' : 'hover:bg-white'
-              }`}
-              aria-label="Next news story"
-              disabled={newsSlides.length <= 1}
-            >
-              ›
-            </button>
-
-            {newsSlides.length ? (
-              <div className="overflow-hidden rounded-3xl bg-transparent">
-                <div
-                  className="flex transition-transform duration-500"
-                  style={{ transform: `translateX(-${newsIndex * 100}%)` }}
-                >
-                  {newsSlides.map((slide, slideIndex) => (
-                    <div key={`news-slide-${slideIndex}`} className="w-full flex-shrink-0 px-2 sm:px-4">
-                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {slide.map((item) => (
-                          <article key={item.id} className="h-full">
-                            <div className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                              <div className="h-48 w-full overflow-hidden">
-                                <div
-                                  className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                                  style={{ backgroundImage: `url(${item.image})` }}
-                                  role="img"
-                                  aria-label={item.title}
-                                />
-                              </div>
-                              <div className="space-y-3 px-4 py-6 sm:px-6">
-                                <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">{item.date}</p>
-                                <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-                                <p className="text-base text-slate-600">{item.summary}</p>
-                              </div>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <p className="mt-6 text-center text-slate-500">News updates coming soon.</p>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto max-w-6xl space-y-16">
-          {alternatingSections.map((section, index) => (
-            <article
-              key={section.title}
-              ref={(element) => {
-                if (element) {
-                  highlightRefs.current[index] = element;
-                }
-              }}
-              className={`reveal-card flex flex-col gap-10 rounded-[32px] bg-transparent px-2 py-4 transition duration-500 lg:flex-row lg:items-center lg:px-4 ${
-                index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              <div className="flex-1 space-y-4 rounded-[28px] border border-transparent bg-white/40 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md">
-      
-                <h3 className="text-3xl font-semibold text-slate-900">{section.title}</h3>
-                <p className="text-base text-slate-700">{section.copy}</p>
-                <Link href={section.cta} className="cta-primary">
-                  Learn More
-                  <span className="ml-2" aria-hidden>
-                    →
-                  </span>
-                </Link>
-              </div>
-              <div className="flex-1 overflow-hidden rounded-3xl border border-white/30 shadow-[0_30px_50px_rgba(12,28,20,0.12)]">
-                <div
-                  className="h-72 w-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${section.image})` }}
-                  role="img"
-                  aria-label={`${section.title} visual`}
-                />
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section ref={impactRef} className="section-canopy px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
-          {impactMetrics.map((metric, index) => (
-            <div
-              key={metric.label}
-              className="metric-card rounded-3xl p-8 text-center transition duration-300 hover:-translate-y-1"
-              style={{ '--animation-delay': `${index * 60}ms` }}
-            >
-              <p className="text-4xl font-bold">
-                <AnimatedCounter value={metric.value} trigger={impactTrigger} />
-                {metric.suffix}
-              </p>
-              <p className="mt-3 text-xs uppercase tracking-[0.35em] text-[var(--color-brand-mist)]">{metric.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[var(--color-brand-mist)] px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <h2 className="text-4xl font-bold text-slate-900">Partners</h2>
-          <div className="mt-12 overflow-hidden">
-            <div className="partner-marquee flex min-w-full gap-8" aria-label="Partner logos marquee">
-              {[...partnerLogos, ...partnerLogos].map((partner, index) => (
-                <div
-                  key={`${partner.name}-${index}`}
-                  className="flex h-24 w-48 flex-shrink-0 items-center justify-center rounded-2xl border border-[var(--color-brand-green)]/15 bg-white text-[var(--color-brand-muted)] shadow-sm"
-                >
-                  <Image src={partner.logo} alt={partner.name} width={160} height={64} className="h-12 w-auto object-contain" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <style jsx>{`
-          @keyframes marquee {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-          .partner-marquee {
-            animation: marquee 25s linear infinite;
-          }
-        `}</style>
-      </section>
-
-      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <h2 className="text-4xl font-bold text-slate-900">Our Team</h2>
-          <p className="mt-3 text-base text-slate-600">
-            Multidisciplinary educators, ecologists, technologists, and community champions.
+      <section className="px-6 py-16" data-reveal>
+        <div className="mx-auto max-w-5xl text-center space-y-4">
+          <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">About SPEED Trust</h2>
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Who we are</p>
+          <p className="text-lg leading-relaxed text-[var(--color-brand-slate)]">
+            SPEED Trust is a non-profit organization managed by senior professionals in environmental management, technical
+            consultancy, and community development. The Trust focuses on environmental protection, rural youth skill development,
+            and sustainable agriculture through technology-driven solutions.
           </p>
         </div>
-        <div className="relative mx-auto mt-10 max-w-6xl">
-          <div className="overflow-visible pb-4">
-            <div
-              className="flex transition-transform duration-500"
-              style={{ transform: `translateX(-${teamIndex * 100}%)` }}
-            >
-              {teamSlides.map((slide, slideIndex) => (
-                <div key={`team-slide-${slideIndex}`} className="w-full flex-shrink-0 px-2">
-                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {slide.map((member) => (
-                      <article
-                        key={member.name}
-                        className="rounded-3xl bg-white p-6 text-center shadow-xl shadow-[rgba(12,28,20,0.12)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_35px_60px_rgba(12,28,20,0.2)]"
-                      >
-                        <div className="mx-auto h-32 w-32 overflow-hidden rounded-full">
-                          <div
-                            className="h-full w-full bg-cover bg-center"
-                            style={{ backgroundImage: `url(${member.image})` }}
-                            role="img"
-                            aria-label={member.name}
-                          />
-                        </div>
-                        <h3 className="mt-4 text-lg font-semibold text-slate-900">{member.name}</h3>
-                        <p className="text-sm font-medium text-[var(--color-brand-green)]">{member.role}</p>
-                        <p className="mt-2 text-sm text-slate-600">{member.bio}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+      </section>
+
+      <div className="mx-auto mb-12 h-px w-11/12 max-w-5xl bg-black/10 shadow-[0_10px_24px_rgba(0,0,0,0.08)]" data-reveal aria-hidden />
+
+      <section className="px-6 pb-16" data-reveal>
+        <div className="mx-auto max-w-6xl space-y-10">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">Focus Highlights</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">What we prioritize</p>
           </div>
-          <div className="mt-6 flex justify-center gap-2">
-            {teamSlides.map((_, index) => (
-              <button
-                key={`team-dot-${index}`}
-                type="button"
-                onClick={() => goToTeam(index)}
-                className={`h-2.5 w-8 rounded-full ${
-                  index === teamIndex ? 'bg-[var(--color-brand-green)]' : 'bg-slate-200'
-                }`}
-                aria-label={`Go to team slide ${index + 1}`}
-                aria-pressed={index === teamIndex}
-              />
+          <div className="space-y-12">
+            {focusHighlights.map((item, idx) => (
+              <article
+                key={item.title}
+                data-reveal
+                className={`flex flex-col gap-6 lg:items-center lg:gap-10 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
+              >
+                <div className="lg:w-1/2 w-full overflow-hidden rounded-3xl shadow-[0_10px_28px_rgba(12,28,20,0.18)]">
+                  <div
+                    className="h-64 w-full bg-cover bg-center sm:h-72 lg:h-80"
+                    style={{ backgroundImage: `url('${item.image}')` }}
+                    aria-label={item.title}
+                  />
+                </div>
+                <div className="lg:w-1/2 w-full space-y-3 text-left">
+                  <h3 className="text-2xl font-bold text-[var(--color-brand-slate)]">{item.title}</h3>
+                  <p className="text-base leading-relaxed text-[var(--color-brand-muted)]">{item.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[var(--color-brand-cream)] px-4 py-16 fade-in-up sm:px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-slate-900">Testimonials</h2>
-        </div>
-        <div className="mx-auto mt-10 max-w-6xl">
-          <div className="flex items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => handleTestimonialNav(-1)}
-              className="hidden rounded-full border border-slate-300 p-3 text-slate-600 transition hover:border-[var(--color-brand-green)] hover:text-[var(--color-brand-green)] sm:flex"
-              aria-label="Previous testimonial slide"
-            >
-              ‹
-            </button>
-            <div className="flex-1 overflow-visible pb-4">
-              <div
-                className="flex transition-transform duration-500"
-                style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
-              >
-                {testimonialSlides.map((slide, slideIndex) => (
-                  <div key={`testimonial-slide-${slideIndex}`} className="w-full flex-shrink-0 px-1">
-                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                      {slide.map((testimonial, index) => (
-                        <article
-                          key={testimonial.name}
-                          className="rounded-3xl border border-[var(--color-brand-green)]/10 bg-white p-6 text-[var(--color-brand-muted)] shadow-lg shadow-[rgba(12,28,20,0.08)] transition duration-300 hover:-translate-y-1"
-                          style={{ '--animation-delay': `${index * 60}ms` }}
-                        >
-                          <p className="text-base text-[var(--color-brand-muted)]">“{testimonial.message}”</p>
-                          <p className="mt-4 text-base font-semibold text-[var(--color-brand-slate)]">{testimonial.name}</p>
-                          <p className="text-sm text-[var(--color-brand-green)]">{testimonial.role}</p>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => handleTestimonialNav(1)}
-              className="hidden rounded-full border border-slate-300 p-3 text-slate-600 transition hover:border-[var(--color-brand-green)] hover:text-[var(--color-brand-green)] sm:flex"
-              aria-label="Next testimonial slide"
-            >
-              ›
-            </button>
+      <div className="mx-auto mb-12 h-px w-11/12 max-w-5xl bg-black/10 shadow-[0_10px_24px_rgba(0,0,0,0.08)]" data-reveal aria-hidden />
+
+      <section className="px-6 pb-16" data-reveal>
+        <div className="mx-auto max-w-6xl space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">Impact Targets</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Where we are heading</p>
           </div>
-          <div className="mt-6 flex justify-center gap-2">
-            {testimonialSlides.map((_, index) => (
-              <button
-                key={`testimonial-dot-${index}`}
-                type="button"
-                onClick={() => goToTestimonial(index)}
-                className={`h-2.5 w-8 rounded-full ${index === testimonialIndex ? 'bg-[var(--color-brand-green)]' : 'bg-slate-200'}`}
-                aria-label={`Go to testimonial slide ${index + 1}`}
-                aria-pressed={index === testimonialIndex}
-              />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {impactTargets.map((item) => (
+              <div
+                key={item.title}
+                data-reveal
+                className="rounded-2xl border border-[var(--color-brand-green)]/12 bg-[var(--color-surface-warm)] px-5 py-6 text-center text-base font-semibold text-[var(--color-brand-slate)] shadow-[0_12px_30px_rgba(12,28,20,0.08)] transition transform hover:-translate-y-1 hover:shadow-xl"
+              >
+                {item.title}
+              </div>
             ))}
           </div>
         </div>

@@ -1,16 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const navLinks = ['Home', 'About', 'Events', 'Courses', 'Guidance', 'Media', 'Contact', 'Login'];
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about'},
+  { label: 'Our Work', href: '/our-work' },
+  { label: 'Services', href: '/services' },
+  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'Contact', href: '/contact' },
+];
 const languages = [
   { code: 'en', label: 'EN', ariaLabel: 'English' },
   { code: 'ta', label: 'த', ariaLabel: 'Tamil' },
 ];
 
 export default function Header() {
+  const { pathname } = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState('en');
@@ -28,32 +37,26 @@ export default function Header() {
   const renderNavLinks = (onClick, options = {}) => {
     const { compact = false } = options;
 
-    return navLinks.map((label) => (
-      <li key={label}>
-        {label === 'Login' ? (
+    return navLinks.map((item) => {
+      const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+      const baseClasses = `block rounded-md border-b-2 transition-colors duration-150 ${compact ? 'px-2 py-1 text-sm' : 'px-3 py-2 text-base'}`;
+      const activeClasses = isActive
+        ? 'text-[var(--color-brand-gold)] border-[var(--color-brand-gold)]'
+        : 'text-white/80 border-transparent hover:text-[var(--color-brand-gold)] hover:border-[var(--color-brand-gold)]';
+
+      return (
+        <li key={item.label}>
           <Link
-            href="/login"
-            className={`block rounded-full bg-[var(--color-brand-coral)] text-center font-semibold text-white shadow-md transition hover:bg-[#a4522f] ${
-              compact ? 'px-3 py-1 text-sm' : 'px-4 py-2 text-base'
-            }`}
+            href={item.href}
+            className={`${baseClasses} ${activeClasses}`}
+            aria-current={isActive ? 'page' : undefined}
             onClick={onClick}
           >
-            {label}
+            {item.label}
           </Link>
-        ) : (
-          <Link
-            href={label === 'Home' ? '/' : `/${label.toLowerCase()}`}
-            className={`block rounded-md transition-colors hover:text-[var(--color-brand-gold)] ${
-              compact ? 'px-2 py-1 text-sm' : 'px-3 py-2 text-base'
-            } ${label === 'Home' ? 'text-white' : 'text-white/80'}`}
-            aria-current={label === 'Home' ? 'page' : undefined}
-            onClick={onClick}
-          >
-            {label}
-          </Link>
-        )}
-      </li>
-    ));
+        </li>
+      );
+    });
   };
 
   return (
@@ -80,7 +83,7 @@ export default function Header() {
             <nav aria-label="Primary navigation" className="flex-1">
               <ul className="flex items-center gap-4 font-medium">{renderNavLinks(undefined, { compact: true })}</ul>
             </nav>
-            <div className="flex items-center gap-1 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
+            {/* <div className="flex items-center gap-1 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
               {languages.map((option) => (
                 <button
                   key={option.code}
@@ -97,7 +100,7 @@ export default function Header() {
                   {option.label}
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <button
@@ -127,7 +130,7 @@ export default function Header() {
               menuOpen ? 'max-h-[600px] pb-4' : 'max-h-0'
             }`}
           >
-            <div className="flex gap-2 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
+            {/* <div className="flex gap-2 rounded-full bg-white/10 p-1 text-xs font-semibold" role="group" aria-label="Select language">
               {languages.map((option) => (
                 <button
                   key={option.code}
@@ -144,9 +147,9 @@ export default function Header() {
                   {option.label}
                 </button>
               ))}
-            </div>
+            </div> */}
             <ul className="flex flex-col gap-1">
-              {renderNavLinks(() => setMenuOpen(false))}
+              {renderNavLinks(() => setMenuOpen(false), { isMobile: true })}
             </ul>
           </div>
         </nav>

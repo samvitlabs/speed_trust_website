@@ -1,15 +1,20 @@
 import { useState } from 'react';
+import useReveal from '../hooks/useReveal';
 
 const info = {
-  address: '45, Evergreen Road, Tenkasi District, Tamil Nadu 627412',
-  phone: '+91-98765-43210',
-  email: 'contact@southernpothigai.org',
-  hours: 'Mon – Sat, 9:00 AM – 6:00 PM IST',
+  address: ['Southern Pothigai Environmental & Educational Trust',
+    '11-12, Premalayam, Sri Jeyanthi Nagar,(Near Sarada College)', 
+    'KTC Nagar, Tirunelveli - 627007', 
+    'Tamil Nadu, India'],
+  phone: '9xxxxxxxxx',
+  email: 'contact@speedtrust.org.in',
 };
 
-const initialForm = { name: '', email: '', message: '' };
+const initialForm = { name: '', email: '', subject: '', message: '' };
 
 export default function Contact() {
+  useReveal();
+
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
@@ -47,7 +52,7 @@ export default function Contact() {
 
   return (
     <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section className="px-6 py-16">
+      <section className="px-6 py-16" data-reveal>
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Contact</p>
           <h1 className="mt-4 text-4xl font-bold">Connect with Southern Pothigai Trust</h1>
@@ -57,38 +62,26 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="px-6 pb-16">
+      <section className="px-6 pb-16" data-reveal>
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <div>
-              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Visit us</p>
-              <p className="mt-2 text-base text-slate-600">{info.address}</p>
+          <article className="space-y-6 surface-card rounded-3xl p-8 transition transform hover:-translate-y-1 hover:shadow-xl" data-reveal>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Address</p>
+            <div className="mt-2 space-y-1 text-base text-slate-600">
+              {info.address.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
             </div>
-            <div>
-              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Call</p>
-              <a href={`tel:${info.phone}`} className="mt-2 block text-base font-semibold text-slate-900">
-                {info.phone}
-              </a>
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Email</p>
-              <a href={`mailto:${info.email}`} className="mt-2 block text-base font-semibold text-slate-900">
-                {info.email}
-              </a>
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Office Hours</p>
-              <p className="mt-2 text-base text-slate-600">{info.hours}</p>
-            </div>
-            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-              <p className="text-sm font-medium text-slate-700">Map</p>
-              <div className="mt-3 flex h-48 items-center justify-center rounded-xl bg-slate-200 text-slate-500">
-                Map placeholder (embed your preferred map service)
-              </div>
-            </div>
+            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Phone</p>
+            <a href={`tel:${info.phone}`} className="mt-2 block text-base font-semibold text-slate-900">
+              {info.phone}
+            </a>
+            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Email</p>
+            <a href={`mailto:${info.email}`} className="mt-2 block text-base font-semibold text-slate-900">
+              {info.email}
+            </a>
           </article>
 
-          <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
+          <article className="rounded-3xl surface-card p-8 transition transform hover:-translate-y-1 hover:shadow-2xl" data-reveal>
             <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Write to us</p>
             <h2 className="mt-2 text-3xl font-semibold text-slate-900">Send a message</h2>
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
@@ -115,6 +108,15 @@ export default function Contact() {
                 {errors.email && <span className="text-sm text-red-600">{errors.email}</span>}
               </label>
               <label className="text-sm font-medium text-slate-600">
+                Subject
+                <input
+                  type="text"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-base"
+                />
+              </label>
+              <label className="text-sm font-medium text-slate-600">
                 Message
                 <textarea
                   rows="5"
@@ -127,7 +129,7 @@ export default function Contact() {
               </label>
               <button
                 type="submit"
-                className="w-full rounded-full bg-[#D93B3B] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition hover:bg-[#b73030]"
+                className="w-full rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-[var(--color-brand-coral)]/90"
               >
                 Send Message
               </button>

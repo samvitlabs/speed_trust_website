@@ -1,121 +1,111 @@
-const timeline = [
-  {
-    year: '2014',
-    title: 'Seeds of Stewardship',
-    description:
-      'A group of ecologists and educators co-founded Speed Trust to reconnect classrooms in Tenkasi with the living laboratory of the Western Ghats.',
-  },
-  {
-    year: '2017',
-    title: 'Watershed Collaboratives',
-    description:
-      'Scaled community-led surveys across eight rivers, combining GIS, indigenous lore, and youth fellowships to co-create water security plans.',
-  },
-  {
-    year: '2020',
-    title: 'Living Soil Mobile Labs',
-    description:
-      'Equipped solar vans to deliver diagnostics, storytelling exhibits, and regenerative farming toolkits to village clusters during the pandemic.',
-  },
-  {
-    year: '2023',
-    title: 'Regional Learning Commons',
-    description:
-      'Opened open-source climate resilience hubs that share curricula, craft labs, and data dashboards for civic groups and schools.',
-  },
+import useReveal from '../hooks/useReveal';
+
+const missionItems = [
+  'To conserve and rejuvenate natural ecosystems through participatory environmental initiatives.',
+  'To promote environmental awareness and responsible practices among students and the public.',
+  'To enhance the employability of rural youth through education, technical training, and entrepreneurship support.',
+  'To facilitate sustainable agricultural and rural development through technological and financial advisory services.',
 ];
 
-const guidingStatements = [
-  {
-    label: 'Mission',
-    title: 'Hold space for communities to heal land and livelihoods',
-    body:
-      'As a registered public trust we convene farmers, teachers, and youth to co-create data-informed stewardship plans. We pair ecological science with cultural memory so every program restores rivers, soils, and dignity in equal measure.',
-  },
-  {
-    label: 'Vision',
-    title: 'Western Ghats commons stewarded by trusted local guardians',
-    body:
-      'We imagine a future where every panchayat hosts its own learning commons, where transparent trust-led governance unlocks green entrepreneurship, and where intergenerational councils keep forests, careers, and culture in balance.',
-  },
+const objectives = [
+  'Environmental Protection and Restoration',
+  'Youth Empowerment and Employment',
+  'Sustainable Agriculture and Technology Integration',
+  'Community Awareness',
+  'Partnerships and Collaborations',
 ];
+
+const futurePlans = [
+  'Expand into multiple villages and districts through a franchise/cooperative model.',
+  'Launch a mobile app to provide farmers with real-time assistance, training, and market access.',
+  'Export agro products under the SPEED Trust brand to promote quality rural produce globally.',
+  'Partner with universities, colleges, and research organizations for ongoing innovation and tech transfer.',
+  'Develop Green Training Centers for hands-on environmental education and sustainable practice demonstrations.',
+];
+
+const goal =
+  'SPEED Trust envisions a green, sustainable, and self-reliant society where environmental preservation and livelihood creation go hand in hand. Through community-driven initiatives and technical expertise, SPEED aims to bring long-term ecological and socio-economic transformation across South India.';
 
 export default function About() {
+  useReveal();
+
   return (
     <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section
-        className="relative h-[60vh] min-h-[420px] w-full bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 flex h-full items-center justify-center px-6 text-center text-white">
-          <div className="max-w-3xl space-y-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-white/80">About Speed Trust</p>
-            <h1 className="text-4xl font-bold sm:text-5xl">
-              Southern Pothigai Environmental and Educational Trust
-            </h1>
-            <p className="text-lg text-white/80">
-              Powering regenerative futures by pairing place-based science with intergenerational learning across the Western Ghats.
+      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/2.png')" }} data-reveal>
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
+          <h1 className="text-4xl font-bold sm:text-5xl">About SPEED Trust</h1>
+          <p className="text-sm uppercase tracking-[0.35em] text-white/80">Southern Pothigai Environmental and Educational Development</p>
+          <p className="text-lg text-white/85">
+            A non-profit organization committed to promoting environmental sustainability, value-based education, and livelihood development. Established by experienced
+            professionals in environmental management and technical consultancy, the Trust aims to build harmony between nature
+            and human progress.
+          </p>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 bg-[#fffaf3]" data-reveal>
+        <div className="mx-auto max-w-6xl space-y-12 text-center">
+          <div className="space-y-3">
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Vision</h2>
+            <p className="text-lg leading-relaxed text-[var(--color-brand-slate)] max-w-4xl mx-auto">
+              To build a sustainable and environmentally conscious society by empowering communities through education, technology, and ecological restoration.
             </p>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Mission</h2>
+            <ul className="mt-2 space-y-3 text-base text-[var(--color-brand-slate)] max-w-4xl mx-auto text-left">
+              {missionItems.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-3 w-3 rounded-full bg-[var(--color-brand-green)]" aria-hidden />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-16">
-        <div className="mx-auto max-w-4xl space-y-10">
-          {guidingStatements.map((statement) => (
-            <div key={statement.label} className="space-y-3 text-center">
-              <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">{statement.label}</h2>
-              <p className="text-lg font-medium text-[var(--color-brand-slate)]">{statement.title}</p>
-              <p className="text-base text-[var(--color-brand-muted)]">{statement.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-white px-6 py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">How we influence society</p>
-            <h2 className="text-3xl font-bold text-[var(--color-brand-green)]">
-              Learning labs that ripple into policy, livelihoods, and culture
-            </h2>
-            <p className="text-base text-slate-600">
-              We convene educators, elders, artists, and scientists to create open curricula, regenerative farming pilots, and storytelling archives. By embedding co-created data into local decision-making, we inspire citizens to advocate for healthier commons.
-            </p>
-            <p className="text-base text-slate-600">
-              From mobile soil labs to youth river crews, our programs demonstrate how participatory science can shift budgets, bylaws, and behaviors toward ecological justice.
-            </p>
+      <section className="bg-[#f4efe6] px-6 py-16" data-reveal>
+        <div className="mx-auto max-w-6xl space-y-10">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Objectives</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">What guides our work</p>
           </div>
-          <div
-            className="h-80 w-full rounded-3xl bg-cover bg-center shadow-lg"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=1400&q=80')",
-            }}
-            role="img"
-            aria-label="Community members restoring a riverbank"
-          />
-        </div>
-      </section>
-
-      <section className="px-6 py-16">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Journey Timeline</p>
-          <h2 className="mt-3 text-3xl font-bold text-[var(--color-brand-green)]">Milestones rooted in community trust</h2>
-          <div className="mt-10 space-y-6 border-l-2 border-[var(--color-brand-green)]/40 pl-6">
-            {timeline.map((entry) => (
-              <article key={entry.year} className="relative pl-6">
-                <span className="absolute -left-[37px] top-2 h-4 w-4 rounded-full border-4 border-[var(--color-brand-cream)] bg-[var(--color-brand-green)]" aria-hidden />
-                <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-brand-green)]">{entry.year}</p>
-                <h3 className="text-2xl font-semibold text-slate-900">{entry.title}</h3>
-                <p className="mt-2 text-base text-slate-600">{entry.description}</p>
-              </article>
+          <div className="grid gap-4 md:grid-cols-2">
+            {objectives.map((item) => (
+              <div
+                key={item}
+                data-reveal
+                className="rounded-xl border border-[var(--color-brand-green)]/25 bg-white/90 px-5 py-4 text-base font-semibold text-[var(--color-brand-slate)] shadow-[0_10px_26px_rgba(12,28,20,0.08)] transition transform hover:-translate-y-1 hover:shadow-xl"
+              >
+                {item}
+              </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16" data-reveal style={{ background: 'linear-gradient(135deg, #edf3ee 0%, #f7f0e6 100%)' }}>
+        <div className="mx-auto max-w-6xl space-y-10">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Future Plans</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Scaling our reach</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {futurePlans.map((item) => (
+              <div key={item} className="rounded-2xl bg-[var(--color-surface-warm)] px-5 py-4 text-base text-[var(--color-brand-slate)] shadow-[0_10px_26px_rgba(12,28,20,0.08)] transition transform hover:-translate-y-1 hover:shadow-xl">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-16" data-reveal style={{ background: 'radial-gradient(circle at 20% 20%, rgba(58,122,76,0.08), transparent 35%), #fdfaf4' }}>
+        <div className="mx-auto max-w-5xl text-center space-y-6 pt-6">
+          <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Goal</h2>
+          <p className="text-lg leading-relaxed text-[var(--color-brand-muted)]">{goal}</p>
         </div>
       </section>
     </main>
