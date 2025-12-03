@@ -59,10 +59,12 @@ export default function Header() {
     });
   };
 
+  const compact = isScrolled;
+
   return (
     <header
-      className={`sticky top-0 z-40 border-b border-white/10 bg-[var(--color-brand-green)] text-white transition-all duration-300 ${
-        isScrolled ? 'py-2 shadow-lg' : 'py-4'
+      className={`fixed inset-x-0 top-0 z-40 w-full border-b border-white/10 text-white transition-all duration-300 ${
+        compact ? 'py-1.5 shadow-lg bg-[var(--color-brand-green)]' : 'py-4 bg-[var(--color-brand-green)]'
       }`}
     >
       <div className="mx-auto w-full max-w-6xl px-6">
@@ -71,12 +73,14 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="Speed Trust logo"
-              width={72}
-              height={72}
-              className="h-[72px] w-[72px] rounded-full bg-white/10 p-2"
+              width={compact ? 54 : 72}
+              height={compact ? 54 : 72}
+              className={`${compact ? 'h-[54px] w-[54px]' : 'h-[72px] w-[72px]'} rounded-full bg-white/10 p-2 transition-all duration-200`}
               priority
             />
-            <span className="text-lg font-semibold tracking-wide">SPEED Trust</span>
+            <span className={`font-semibold tracking-wide transition-all duration-200 ${compact ? 'text-base' : 'text-lg'}`}>
+              SPEED Trust
+            </span>
           </Link>
 
           <div className="ml-auto hidden items-start gap-6 lg:flex">

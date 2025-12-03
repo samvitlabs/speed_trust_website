@@ -32,20 +32,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/about.js"
     ],
-    "/get-involved": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/get-involved.js"
-    ],
     "/our-work": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/our-work.js"
-    ],
-    "/services": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/services.js"
     ]
   },
   "ampFirstPages": []

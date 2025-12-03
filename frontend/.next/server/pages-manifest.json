@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/services": "pages/services.js",
-  "/get-involved": "pages/get-involved.js",
   "/": "pages/index.js",
-  "/about": "pages/about.js",
-  "/our-work": "pages/our-work.js"
+  "/our-work": "pages/our-work.js",
+  "/about": "pages/about.js"
 }
