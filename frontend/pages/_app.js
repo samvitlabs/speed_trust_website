@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
     <AuthProvider>
       <div className="flex min-h-screen flex-col bg-brand-background text-slate-900 overflow-x-hidden">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 pt-24 sm:pt-25">
           <Component {...pageProps} />
         </main>
         <Footer />
