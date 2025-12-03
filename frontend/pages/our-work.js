@@ -17,7 +17,7 @@ const initiatives = [
       'Awareness campaigns on environmental protection and biodiversity conservation.',
       'Afforestation drives and maintenance of plantation zones with NGOs and Government Departments.',
     ],
-    image: '/images/about/1.png',
+    image: '/images/about/awareness.png',
   },
   {
     title: 'Rural Youth Engagement Program',
@@ -27,7 +27,7 @@ const initiatives = [
       'Entrepreneurship guidance and mentorship programs.',
       'Facilitation of employment opportunities in local industries and enterprises.',
     ],
-    image: '/images/about/3.png',
+    image: '/images/about/workshop.png',
   },
 ];
 
@@ -36,7 +36,7 @@ export default function OurWork() {
 
   return (
     <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/3.png')" }} data-reveal>
+      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/new_practices.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
           <p className="text-sm uppercase tracking-[0.35em] text-white/80">Our Work</p>

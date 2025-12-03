@@ -31,7 +31,7 @@ export default function About() {
 
   return (
     <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/2.png')" }} data-reveal>
+      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/cleaning.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
           <h1 className="text-4xl font-bold sm:text-5xl">About SPEED Trust</h1>

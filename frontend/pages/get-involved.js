@@ -24,7 +24,7 @@ export default function GetInvolved() {
 
   return (
     <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/2.png')" }} data-reveal>
+      <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/awareness.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[55vh] max-w-5xl flex-col justify-center gap-3 px-6 py-16 text-white">
           <p className="text-sm uppercase tracking-[0.35em] text-white/80">Get Involved</p>

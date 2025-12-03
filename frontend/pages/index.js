@@ -2,27 +2,35 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import useReveal from '../hooks/useReveal';
 
-const heroSlides = ['/images/about/1.png', '/images/about/2.png', '/images/about/3.png'];
+const heroSlides = [
+                '/images/about/reforestation.png',
+                '/images/about/cleaning.png',
+                '/images/about/workshop.png',
+                '/images/about/advisory.png',
+                '/images/about/awareness.png',
+                '/images/about/new_practices.png'
+
+    ];
 const focusHighlights = [
   {
     title: 'Environmental Protection & Ecosystem Restoration',
     description: 'Tree plantations, waterbody rejuvenation, and habitat conservation that restore ecological balance.',
-    image: '/images/about/1.png',
+    image: '/images/about/cleaning.png',
   },
   {
     title: 'Skill Development & Youth Empowerment',
     description: 'Training, mentorship, and placements that help rural youth build sustainable careers.',
-    image: '/images/about/2.png',
+    image: '/images/about/workshop.png',
   },
   {
     title: 'Sustainable Agriculture & Technological Integration',
     description: 'Tech-enabled advisory for farmers to improve yields while protecting soil and water.',
-    image: '/images/about/3.png',
+    image: '/images/about/advisory.png',
   },
   {
     title: 'Community Awareness & Value-Based Education',
     description: 'Campaigns and learning programs that build climate consciousness and responsible practices.',
-    image: '/images/about/3.png',
+    image: '/images/about/awareness.png',
   },
 ];
 
