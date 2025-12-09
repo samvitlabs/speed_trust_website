@@ -61,7 +61,7 @@ export default function Home() {
         description="Southern Pothigai Environmental and Educational Development Trust promotes environmental protection, tree plantation, rural youth skill development, and sustainable agriculture across Tamil Nadu."
         canonical="/"
       />
-      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+      <main className="bg-white text-[var(--color-brand-text-dark)]">
         <section className="relative overflow-hidden bg-cover bg-center hero-fade" data-reveal>
           {heroSlides.map((slide, index) => (
             <div
@@ -82,23 +82,23 @@ export default function Home() {
           ))}
           <div className="absolute inset-0 bg-black/60 z-20" />
         <div className="relative z-30 mx-auto flex min-h-[70vh] max-w-6xl flex-col items-start justify-center gap-6 px-6 py-16 text-white">
-          <p className="text-sm uppercase tracking-[0.35em] text-white/80">SPEED Trust</p>
-          <h1 className="max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-white)]">SPEED Trust</p>
+          <h1 className="max-w-4xl text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Southern Pothigai Environmental and Educational Development (SPEED) Trust
           </h1>
-          <p className="max-w-3xl text-lg text-white/85">
+          <p className="max-w-3xl text-lg text-white">
             Promoting environmental sustainability, value-based education, and livelihood development across South India.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/about"
-              className="rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-white/10"
+              className="rounded-full bg-[var(--color-brand-pink)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-[var(--color-brand-pink-bright)]"
             >
               Learn More
             </Link>
             <Link
               href="/our-work"
-              className="rounded-full bg-white px-6 py-3 text-base font-semibold text-[var(--color-brand-slate)] transition transform hover:scale-105 hover:shadow-lg hover:bg-white/80"
+              className="rounded-full bg-[var(--color-brand-pink)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-[var(--color-brand-pink-bright)]"
             >
               Our Work
             </Link>
@@ -119,8 +119,8 @@ export default function Home() {
 
       <section className="px-6 py-16" data-reveal>
         <div className="mx-auto max-w-5xl text-center space-y-4">
-          <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">About SPEED Trust</h2>
-          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Who we are</p>
+          <h2 className="text-3xl font-bold text-[var(--color-brand-teal)]">About SPEED Trust</h2>
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">Who we are</p>
           <p className="text-lg leading-relaxed text-[var(--color-brand-slate)]">
             SPEED Trust is a non-profit organization managed by senior professionals in environmental management, technical
             consultancy, and community development. The Trust focuses on environmental protection, rural youth skill development,
@@ -134,8 +134,8 @@ export default function Home() {
       <section className="px-6 pb-16" data-reveal>
         <div className="mx-auto max-w-6xl space-y-10">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">Focus Highlights</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">What we prioritize</p>
+            <h2 className="text-3xl font-bold text-[var(--color-brand-teal)]">Focus Highlights</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">What we prioritize</p>
           </div>
           <div className="space-y-12">
             {focusHighlights.map((item, idx) => (
@@ -155,7 +155,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="lg:w-1/2 w-full space-y-3 text-left">
-                  <h3 className="text-2xl font-bold text-[var(--color-brand-slate)]">{item.title}</h3>
+                  <h3 className="text-2xl font-bold text-[var(--color-brand-teal)]">{item.title}</h3>
                   <p className="text-base leading-relaxed text-[var(--color-brand-muted)]">{item.description}</p>
                 </div>
               </article>
@@ -169,15 +169,15 @@ export default function Home() {
       <section className="px-6 pb-16" data-reveal>
         <div className="mx-auto max-w-6xl space-y-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-[var(--color-brand-slate)]">Impact Targets</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Where we are heading</p>
+            <h2 className="text-3xl font-bold text-[var(--color-brand-teal)]">Impact Targets</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">Where we are heading</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {impactTargets.map((item) => (
               <div
                 key={item.title}
                 data-reveal
-                className="rounded-2xl border border-[var(--color-brand-green)]/12 bg-[var(--color-surface-warm)] px-5 py-6 text-center text-base font-semibold text-[var(--color-brand-slate)] shadow-[0_12px_30px_rgba(12,28,20,0.08)] transition transform hover:-translate-y-1 hover:shadow-xl"
+                className="rounded-2xl border border-[var(--color-brand-green)]/12 bg-[var(--color-surface-warm)] px-5 py-6 text-center text-base font-semibold text-[var(--color-brand-muted)] shadow-[0_12px_30px_rgba(12,28,20,0.08)] transition transform hover:-translate-y-1 hover:shadow-xl"
               >
                 {item.title}
               </div>

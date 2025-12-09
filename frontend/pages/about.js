@@ -37,13 +37,13 @@ export default function About() {
         description="Learn about SPEED Trust's mission to conserve ecosystems, empower rural youth, and promote sustainable agriculture across South India."
         canonical="/about"
       />
-      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+      <main className="bg-white text-[var(--color-brand-text-dark)]">
       <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/cleaning.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
-          <h1 className="text-4xl font-bold sm:text-5xl">About SPEED Trust</h1>
-          <p className="text-sm uppercase tracking-[0.35em] text-white/80">Southern Pothigai Environmental and Educational Development</p>
-          <p className="text-lg text-white/85">
+          <h1 className="text-4xl font-bold text-white sm:text-5xl">About SPEED Trust</h1>
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-white)]">Southern Pothigai Environmental and Educational Development</p>
+          <p className="text-lg text-white">
             A non-profit organization committed to promoting environmental sustainability, value-based education, and livelihood development. Established by experienced
             professionals in environmental management and technical consultancy, the Trust aims to build harmony between nature
             and human progress.
@@ -51,16 +51,16 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 py-16 bg-[#fffaf3]" data-reveal>
+      <section className="px-6 py-16 bg-white" data-reveal>
         <div className="mx-auto max-w-6xl space-y-12 text-center">
           <div className="space-y-3">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Vision</h2>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Vision</h2>
             <p className="text-lg leading-relaxed text-[var(--color-brand-slate)] max-w-4xl mx-auto">
               To build a sustainable and environmentally conscious society by empowering communities through education, technology, and ecological restoration.
             </p>
           </div>
           <div className="space-y-3">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Mission</h2>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Mission</h2>
             <ul className="mt-2 space-y-3 text-base text-[var(--color-brand-slate)] max-w-4xl mx-auto text-left">
               {missionItems.map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -73,11 +73,11 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#f4efe6] px-6 py-16" data-reveal>
+      <section className="bg-gray-50 px-6 py-16" data-reveal>
         <div className="mx-auto max-w-6xl space-y-10">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Objectives</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">What guides our work</p>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Objectives</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">What guides our work</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {objectives.map((item) => (
@@ -93,11 +93,11 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 py-16" data-reveal style={{ background: 'linear-gradient(135deg, #edf3ee 0%, #f7f0e6 100%)' }}>
+      <section className="px-6 py-16 bg-white" data-reveal>
         <div className="mx-auto max-w-6xl space-y-10">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Future Plans</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Scaling our reach</p>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Future Plans</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">Scaling our reach</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {futurePlans.map((item) => (
@@ -109,9 +109,9 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 pb-16" data-reveal style={{ background: 'radial-gradient(circle at 20% 20%, rgba(58,122,76,0.08), transparent 35%), #fdfaf4' }}>
+      <section className="px-6 pb-16 bg-gray-50" data-reveal>
         <div className="mx-auto max-w-5xl text-center space-y-6 pt-6">
-          <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Goal</h2>
+          <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Goal</h2>
           <p className="text-lg leading-relaxed text-[var(--color-brand-muted)]">{goal}</p>
         </div>
       </section>

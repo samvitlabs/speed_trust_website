@@ -241,7 +241,17 @@ const email = "actual-email@domain.com";
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Docker (Recommended for Production)
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Access at http://localhost:3000
+```
+
+See [DOCKER_GUIDE.md](DOCKER_GUIDE.md) for complete Docker documentation.
+
+### Vercel (Alternative)
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -309,6 +319,9 @@ rm -rf .next         # Remove build cache
 
 ## 🔗 Important Links
 
+- **[DOCKER_GUIDE.md](DOCKER_GUIDE.md)** - Docker setup and troubleshooting
+- **[OPTIMIZATIONS.md](OPTIMIZATIONS.md)** - Performance optimizations
+- **[COLOR_GUIDE.md](COLOR_GUIDE.md)** - Color system guide
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [Next.js Image Optimization](https://nextjs.org/docs/basic-features/image-optimization)
