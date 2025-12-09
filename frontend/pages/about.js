@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import useReveal from '../hooks/useReveal';
 
 const missionItems = [
@@ -30,7 +31,13 @@ export default function About() {
   useReveal();
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+    <>
+      <SEO
+        title="About SPEED Trust - Mission, Vision & Objectives"
+        description="Learn about SPEED Trust's mission to conserve ecosystems, empower rural youth, and promote sustainable agriculture across South India."
+        canonical="/about"
+      />
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/cleaning.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
@@ -109,5 +116,6 @@ export default function About() {
         </div>
       </section>
     </main>
+    </>
   );
 }

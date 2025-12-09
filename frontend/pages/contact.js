@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from '../components/SEO';
 import useReveal from '../hooks/useReveal';
 
 const info = {
@@ -18,6 +19,7 @@ export default function Contact() {
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -36,6 +38,7 @@ export default function Contact() {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length) return;
 
+    setIsSubmitting(true);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -45,13 +48,22 @@ export default function Contact() {
       if (!res.ok) throw new Error('Failed submission');
       setStatus({ type: 'success', message: 'Thanks for reaching out! We will get back soon.' });
       setFormData(initialForm);
+      setErrors({});
     } catch (error) {
       setStatus({ type: 'error', message: 'Unable to send. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+    <>
+      <SEO
+        title="Contact Us - SPEED Trust | Get in Touch"
+        description="Contact SPEED Trust for environmental consultancy, partnerships, or volunteer opportunities. Located in Tirunelveli, Tamil Nadu."
+        canonical="/contact"
+      />
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="px-6 py-16" data-reveal>
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Contact</p>
@@ -129,9 +141,20 @@ export default function Contact() {
               </label>
               <button
                 type="submit"
-                className="w-full rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-[var(--color-brand-coral)]/90"
+                disabled={isSubmitting}
+                className="w-full rounded-full bg-[var(--color-brand-coral)] px-6 py-3 text-base font-semibold text-white transition transform hover:scale-105 hover:shadow-lg hover:bg-[var(--color-brand-coral)]/90 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  'Send Message'
+                )}
               </button>
               {status.message && (
                 <p className={`text-center text-sm ${status.type === 'success' ? 'text-emerald-600' : 'text-red-600'}`}>
@@ -143,5 +166,6 @@ export default function Contact() {
         </div>
       </section>
     </main>
+    </>
   );
 }

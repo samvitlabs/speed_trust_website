@@ -13,20 +13,23 @@ const navLinks = [
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'Contact', href: '/contact' },
 ];
-const languages = [
-  { code: 'en', label: 'EN', ariaLabel: 'English' },
-  { code: 'ta', label: 'த', ariaLabel: 'Tamil' },
-];
 
 export default function Header() {
   const { pathname } = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [language, setLanguage] = useState('en');
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import SEO from '../components/SEO';
 import useReveal from '../hooks/useReveal';
 
 const heroSlides = [
@@ -53,18 +55,33 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
-      <section className="relative overflow-hidden bg-cover bg-center hero-fade" data-reveal>
-        {heroSlides.map((slide, index) => (
-          <div
-            key={slide}
-            className={`absolute inset-0 transition-opacity duration-700 ${index === heroIndex ? 'opacity-100' : 'opacity-0'}`}
-            style={{ backgroundImage: `url('${slide}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            aria-hidden={index !== heroIndex}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-6xl flex-col items-start justify-center gap-6 px-6 py-16 text-white">
+    <>
+      <SEO
+        title="SPEED Trust - Environmental Sustainability & Youth Empowerment in South India"
+        description="Southern Pothigai Environmental and Educational Development Trust promotes environmental protection, tree plantation, rural youth skill development, and sustainable agriculture across Tamil Nadu."
+        canonical="/"
+      />
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+        <section className="relative overflow-hidden bg-cover bg-center hero-fade" data-reveal>
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide}
+              className={`absolute inset-0 transition-opacity duration-700 ${index === heroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              aria-hidden={index !== heroIndex}
+            >
+              <Image
+                src={slide}
+                alt={`SPEED Trust initiative ${index + 1}`}
+                fill
+                priority={index === 0}
+                quality={85}
+                sizes="100vw"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-black/60 z-20" />
+        <div className="relative z-30 mx-auto flex min-h-[70vh] max-w-6xl flex-col items-start justify-center gap-6 px-6 py-16 text-white">
           <p className="text-sm uppercase tracking-[0.35em] text-white/80">SPEED Trust</p>
           <h1 className="max-w-4xl text-3xl font-bold sm:text-4xl lg:text-5xl">
             Southern Pothigai Environmental and Educational Development (SPEED) Trust
@@ -87,7 +104,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
+        <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2 z-30">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -127,11 +144,14 @@ export default function Home() {
                 data-reveal
                 className={`flex flex-col gap-6 lg:items-center lg:gap-10 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
               >
-                <div className="lg:w-1/2 w-full overflow-hidden rounded-3xl shadow-[0_10px_28px_rgba(12,28,20,0.18)]">
-                  <div
-                    className="h-64 w-full bg-cover bg-center sm:h-72 lg:h-80"
-                    style={{ backgroundImage: `url('${item.image}')` }}
-                    aria-label={item.title}
+                <div className="lg:w-1/2 w-full overflow-hidden rounded-3xl shadow-[0_10px_28px_rgba(12,28,20,0.18)] relative h-64 sm:h-72 lg:h-80">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    quality={85}
                   />
                 </div>
                 <div className="lg:w-1/2 w-full space-y-3 text-left">
@@ -166,5 +186,6 @@ export default function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }

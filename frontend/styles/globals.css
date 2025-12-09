@@ -30,7 +30,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--color-brand-cream);
   color: var(--color-brand-slate);
   overflow-x: hidden;
@@ -45,38 +45,28 @@ a {
   color: inherit;
 }
 
-.btn-primary {
-  background-color: var(--color-brand-coral);
-  color: #ffffff;
+/* Accessibility - Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-.card-surface {
-  background-color: #f4f4f4;
-}
-
-.cta-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.65rem 1.5rem;
-  background: var(--color-brand-coral);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
-  box-shadow: 0 12px 24px rgba(13, 37, 23, 0.18);
-}
-
-.cta-primary:hover {
-  background: #a4522f;
-  box-shadow: 0 14px 26px rgba(13, 37, 23, 0.2);
-}
-
-.cta-primary span {
-  font-size: 1rem;
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 .hero-overlay {

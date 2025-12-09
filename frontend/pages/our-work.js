@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import useReveal from '../hooks/useReveal';
 
 const focusAreas = [
@@ -35,7 +36,13 @@ export default function OurWork() {
   useReveal();
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+    <>
+      <SEO
+        title="Our Work - SPEED Trust Initiatives & Programs"
+        description="Discover SPEED Trust's environmental initiatives including Friends of Nature Club, rural youth engagement, tree plantation drives, and sustainable agriculture programs."
+        canonical="/our-work"
+      />
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/new_practices.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
@@ -103,5 +110,6 @@ export default function OurWork() {
         </div>
       </section>
     </main>
+    </>
   );
 }

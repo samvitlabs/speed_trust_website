@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import useReveal from '../hooks/useReveal';
 
 const actions = [
@@ -23,7 +24,13 @@ export default function GetInvolved() {
   useReveal();
 
   return (
-    <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
+    <>
+      <SEO
+        title="Get Involved - Volunteer, Partner & Donate | SPEED Trust"
+        description="Join SPEED Trust as a volunteer, partner with us, donate to environmental causes, or become a member of Friends of Nature Club. Make a difference today."
+        canonical="/get-involved"
+      />
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/awareness.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[55vh] max-w-5xl flex-col justify-center gap-3 px-6 py-16 text-white">
@@ -54,5 +61,6 @@ export default function GetInvolved() {
         </div>
       </section>
     </main>
+    </>
   );
 }
