@@ -11,6 +11,9 @@ const eventPhotos = [
   { src: '/images/media/photos/6.jpeg', alt: 'SPEED Trust Event 4', id: 4 },
   { src: '/images/media/photos/7.jpeg', alt: 'SPEED Trust Event 5', id: 5 },
   { src: '/images/media/photos/10.jpeg', alt: 'SPEED Trust Event 6', id: 6 },
+  { src: '/images/media/photos/1.jpeg', alt: 'SPEED Trust Event 7', id: 7 },
+  { src: '/images/media/photos/2.jpeg', alt: 'SPEED Trust Event 8', id: 8 },
+  { src: '/images/media/photos/8.jpeg', alt: 'SPEED Trust Event 9', id: 9 },
 ];
 
 // News articles from news subfolder
@@ -19,6 +22,9 @@ const newsArticles = [
   { src: '/images/media/news/2.jpeg', alt: 'SPEED Trust News Article 2', id: 2 },
   { src: '/images/media/news/8.jpeg', alt: 'SPEED Trust News Article 3', id: 3 },
   { src: '/images/media/news/9.jpeg', alt: 'SPEED Trust News Article 4', id: 4 },
+  { src: '/images/media/news/3.jpeg', alt: 'SPEED Trust News Article 5', id: 5 },
+  { src: '/images/media/news/4.jpeg', alt: 'SPEED Trust News Article 6', id: 6 },
+  { src: '/images/media/news/5.jpeg', alt: 'SPEED Trust News Article 7', id: 7 },
 ];
 
 // Reusable Carousel Component

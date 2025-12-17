@@ -16,23 +16,28 @@ const heroSlides = [
 const focusHighlights = [
   {
     title: 'Environmental Protection & Ecosystem Restoration',
-    description: 'Tree plantations, waterbody rejuvenation, and habitat conservation that restore ecological balance.',
+    description: 'Undertake tree plantation drives, rejuvenation of water bodies, and conservation of natural habitats.',
     image: '/images/about/cleaning.png',
   },
   {
     title: 'Skill Development & Youth Empowerment',
-    description: 'Training, mentorship, and placements that help rural youth build sustainable careers.',
+    description: 'Engage unemployed youth and school dropouts in rural areas, providing skill development training and job placementsupport.',
     image: '/images/about/workshop.png',
   },
   {
     title: 'Sustainable Agriculture & Technological Integration',
-    description: 'Tech-enabled advisory for farmers to improve yields while protecting soil and water.',
+    description: 'Promote modern yet eco-friendly agricultural practices through technical advisory and innovation.',
     image: '/images/about/advisory.png',
   },
   {
     title: 'Community Awareness & Value-Based Education',
-    description: 'Campaigns and learning programs that build climate consciousness and responsible practices.',
+    description: 'Create awareness about environmental protection, wastea management, and sustainable living among schools, colleges, and the general public.',
     image: '/images/about/awareness.png',
+  },
+    {
+    title: 'Partnership and Collaboration',
+    description: 'Work with educational institutions, government bodies, and private organizations for sustainable and inclusive development.',
+    image: '/images/about/collaboration.png',
   },
 ];
 

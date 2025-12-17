@@ -7,8 +7,8 @@ const info = {
     '11-12, Premalayam, Sri Jeyanthi Nagar,(Near Sarada College)', 
     'KTC Nagar, Tirunelveli - 627007', 
     'Tamil Nadu, India'],
-  phone: '9xxxxxxxxx',
-  email: 'contact@speedtrust.org.in',
+  phone: 'xxxxxxxxxx',
+  email: 'xxxxxxx@speedtrust.org.in',
 };
 
 const initialForm = { name: '', email: '', subject: '', message: '' };
