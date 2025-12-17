@@ -122,11 +122,14 @@ function MediaCarousel({ images, title, subtitle, aspectRatio = "aspect-video" }
               alt={image.alt}
               fill
               priority={index === 0}
-              quality={90}
-              sizes="(max-width: 1536px) 100vw, 1536px"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              quality={85}
+              sizes="(max-width: 768px) 100vw, (max-width: 1536px) 90vw, 1400px"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
               onClick={() => setSelectedImage(image)}
               className="cursor-pointer"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </div>
         ))}
@@ -191,8 +194,12 @@ function MediaCarousel({ images, title, subtitle, aspectRatio = "aspect-video" }
               src={image.src}
               alt={image.alt}
               fill
+              loading="lazy"
+              quality={60}
               sizes="(max-width: 768px) 33vw, 16vw"
               style={{ objectFit: 'cover' }}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </button>
         ))}
@@ -218,10 +225,11 @@ function MediaCarousel({ images, title, subtitle, aspectRatio = "aspect-video" }
               src={selectedImage.src}
               alt={selectedImage.alt}
               fill
-              quality={95}
-              sizes="100vw"
+              quality={90}
+              sizes="(max-width: 768px) 100vw, 90vw"
               style={{ objectFit: 'contain' }}
               priority
+              loading="eager"
             />
           </div>
         </div>
@@ -239,6 +247,19 @@ export default function Media() {
         title="Media Gallery - SPEED Trust"
         description="Explore photos and moments from SPEED Trust's environmental initiatives, community programs, and impactful work across South India."
         canonical="/media"
+      />
+      {/* Preload first images for faster loading */}
+      <link
+        rel="preload"
+        as="image"
+        href={eventPhotos[0].src}
+        imageSrcSet={`/_next/image?url=${encodeURIComponent(eventPhotos[0].src)}&w=640&q=85 640w, /_next/image?url=${encodeURIComponent(eventPhotos[0].src)}&w=1080&q=85 1080w`}
+      />
+      <link
+        rel="preload"
+        as="image"
+        href={newsArticles[0].src}
+        imageSrcSet={`/_next/image?url=${encodeURIComponent(newsArticles[0].src)}&w=640&q=85 640w, /_next/image?url=${encodeURIComponent(newsArticles[0].src)}&w=1080&q=85 1080w`}
       />
       <main className="bg-white text-[var(--color-brand-text-dark)]">
         {/* Event Photos Section */}

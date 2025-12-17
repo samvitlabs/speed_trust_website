@@ -2,8 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/services": "pages/services.js",
   "/": "pages/index.js",
-  "/get-involved": "pages/get-involved.js",
-  "/contact": "pages/contact.js",
-  "/about": "pages/about.js"
+  "/initiatives": "pages/initiatives.js",
+  "/plan-of-activities": "pages/plan-of-activities.js",
+  "/about": "pages/about.js",
+  "/media": "pages/media.js"
 }

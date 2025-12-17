@@ -32,15 +32,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/about.js"
     ],
-    "/contact": [
+    "/initiatives": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/contact.js"
+      "static/chunks/pages/initiatives.js"
     ],
-    "/get-involved": [
+    "/media": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/get-involved.js"
+      "static/chunks/pages/media.js"
+    ],
+    "/plan-of-activities": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/plan-of-activities.js"
+    ],
+    "/services": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/services.js"
     ]
   },
   "ampFirstPages": []

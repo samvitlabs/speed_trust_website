@@ -8,7 +8,14 @@ import { useRouter } from 'next/router';
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about'},
-  { label: 'Our Work', href: '/our-work' },
+  {
+    label: 'Our Work',
+    href: '/our-work',
+    subLinks: [
+      { label: 'Initiatives', href: '/initiatives' },
+      { label: 'Plan of Activities', href: '/plan-of-activities' },
+    ]
+  },
   { label: 'Services', href: '/services' },
   { label: 'Media', href: '/media' },
   { label: 'Get Involved', href: '/get-involved' },
@@ -19,6 +26,7 @@ export default function Header() {
   const { pathname } = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   useEffect(() => {
     let ticking = false;
@@ -39,14 +47,100 @@ export default function Header() {
   }, []);
 
   const renderNavLinks = (onClick, options = {}) => {
-    const { compact = false } = options;
+    const { compact = false, isMobile = false } = options;
 
     return navLinks.map((item) => {
       const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+      const hasSubLinks = item.subLinks && item.subLinks.length > 0;
       const baseClasses = `block rounded-md border-b-2 transition-colors duration-150 ${compact ? 'px-2 py-1 text-sm' : 'px-3 py-2 text-base'}`;
       const activeClasses = isActive
         ? 'text-[var(--color-brand-gold)] border-[var(--color-brand-gold)]'
         : 'text-white/80 border-transparent hover:text-[var(--color-brand-gold)] hover:border-[var(--color-brand-gold)]';
+
+      if (hasSubLinks && !isMobile) {
+        return (
+          <li
+            key={item.label}
+            className="relative"
+            onMouseEnter={() => setOpenDropdown(item.label)}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <Link
+              href={item.href}
+              className={`${baseClasses} ${activeClasses} flex items-center gap-1`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-3 w-3"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+            {openDropdown === item.label && (
+              <ul className="absolute left-0 top-full mt-1 min-w-[200px] rounded-md bg-[var(--color-brand-green)] shadow-lg border border-white/10 py-2">
+                {item.subLinks.map((subLink) => {
+                  const isSubActive = pathname === subLink.href;
+                  return (
+                    <li key={subLink.href}>
+                      <Link
+                        href={subLink.href}
+                        className={`block px-4 py-2 text-sm transition-colors ${
+                          isSubActive
+                            ? 'text-[var(--color-brand-gold)] bg-white/10'
+                            : 'text-white/80 hover:text-[var(--color-brand-gold)] hover:bg-white/10'
+                        }`}
+                        onClick={onClick}
+                      >
+                        {subLink.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </li>
+        );
+      }
+
+      if (hasSubLinks && isMobile) {
+        return (
+          <li key={item.label}>
+            <Link
+              href={item.href}
+              className={`${baseClasses} ${activeClasses}`}
+              aria-current={isActive ? 'page' : undefined}
+              onClick={onClick}
+            >
+              {item.label}
+            </Link>
+            <ul className="ml-4 mt-1 space-y-1">
+              {item.subLinks.map((subLink) => {
+                const isSubActive = pathname === subLink.href;
+                const subClasses = `block rounded-md border-b-2 transition-colors duration-150 px-2 py-1 text-sm`;
+                const subActiveClasses = isSubActive
+                  ? 'text-[var(--color-brand-gold)] border-[var(--color-brand-gold)]'
+                  : 'text-white/70 border-transparent hover:text-[var(--color-brand-gold)] hover:border-[var(--color-brand-gold)]';
+
+                return (
+                  <li key={subLink.href}>
+                    <Link
+                      href={subLink.href}
+                      className={`${subClasses} ${subActiveClasses}`}
+                      onClick={onClick}
+                    >
+                      {subLink.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        );
+      }
 
       return (
         <li key={item.label}>
@@ -157,7 +251,7 @@ export default function Header() {
               ))}
             </div> */}
             <ul className="flex flex-col gap-1">
-              {renderNavLinks(() => setMenuOpen(false), { isMobile: true })}
+              {renderNavLinks(() => setMenuOpen(false), { isMobile: true, compact: false })}
             </ul>
           </div>
         </nav>
