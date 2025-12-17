@@ -43,10 +43,10 @@ export default function Header() {
 
     return navLinks.map((item) => {
       const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
-      const baseClasses = `block rounded-full transition-all duration-200 ${compact ? 'px-3 py-1.5 text-sm' : 'px-4 py-2 text-base'}`;
+      const baseClasses = `block rounded-md border-b-2 transition-colors duration-150 ${compact ? 'px-2 py-1 text-sm' : 'px-3 py-2 text-base'}`;
       const activeClasses = isActive
-        ? 'bg-[var(--color-brand-pink)] text-white font-semibold'
-        : 'text-white/80 hover:text-white hover:bg-white/10';
+        ? 'text-[var(--color-brand-gold)] border-[var(--color-brand-gold)]'
+        : 'text-white/80 border-transparent hover:text-[var(--color-brand-gold)] hover:border-[var(--color-brand-gold)]';
 
       return (
         <li key={item.label}>

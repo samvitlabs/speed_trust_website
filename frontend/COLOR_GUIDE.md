@@ -109,37 +109,36 @@ colors: {
 
 ---
 
-## 🎨 **COMPLETE COLOR PALETTE** (NEW: Warm & Compassionate Theme)
+## 🎨 **COMPLETE COLOR PALETTE**
 
 ### **Primary Brand Colors**
 
 | Variable | Hex | Usage | Where |
 |----------|-----|-------|-------|
-| `--color-brand-green` | `#8B2635` 🔴 | Primary maroon/burgundy | Header, buttons, links |
-| `--color-brand-coral` | `#FF6B35` 🟠 | Warm orange accent | Call-to-action buttons |
-| `--color-brand-cream` | `#FFF8F0` 🟡 | Soft cream background | Page backgrounds |
-| `--color-brand-slate` | `#2d1215` 🔴 | Dark maroon text | Body text, headings |
-| `--color-brand-gold` | `#d4a373` 🟡 | Warm gold | Active nav items |
+| `--color-brand-green` | `#1c4a2b` | Primary brand color | Header, buttons, links |
+| `--color-brand-coral` | `#b9683c` | Accent/CTA color | Call-to-action buttons |
+| `--color-brand-cream` | `#f5f1e5` | Background | Page backgrounds |
+| `--color-brand-slate` | `#0c1c14` | Text color | Body text, headings |
+| `--color-brand-gold` | `#c7a253` | Highlights | Active nav items |
 
 ### **Extended Palette**
 
 | Variable | Hex | Purpose |
 |----------|-----|---------|
-| `--color-brand-forest` | `#6b1e2a` 🔴 | Dark maroon variant |
-| `--color-brand-moss` | `#a83d4d` 🔴 | Medium maroon |
-| `--color-brand-earth` | `#e67e50` 🟠 | Soft orange |
-| `--color-brand-river` | `#ff8f6b` 🟠 | Light coral |
-| `--color-brand-mist` | `#FAF7F2` 🟡 | Warm beige |
-| `--color-brand-muted` | `#6b4c4f` 🔴 | Muted maroon text |
+| `--color-brand-forest` | `#0d2517` | Dark green variant |
+| `--color-brand-moss` | `#3a7a4c` | Medium green |
+| `--color-brand-earth` | `#b0713c` | Brown accent |
+| `--color-brand-river` | `#598f7c` | Teal accent |
+| `--color-brand-mist` | `#e1eadf` | Light green |
+| `--color-brand-muted` | `#425248` | Muted text |
 
 ### **Surface Colors**
 
 | Variable | Hex | Purpose |
 |----------|-----|---------|
 | `--color-surface` | `#ffffff` | White surface |
-| `--color-surface-warm` | `#fffbf7` 🟡 | Very soft cream |
-| `--color-surface-border` | `#f0e5dd` 🟡 | Warm borders |
-| `--color-shadow-soft` | `rgba(139,38,53,0.15)` 🔴 | Warm maroon shadows |
+| `--color-surface-warm` | `#fbfaf6` | Warm card background |
+| `--color-surface-border` | `#dcd4c6` | Card borders |
 
 ---
 
@@ -301,14 +300,4 @@ When changing colors, ensure:
 
 **Last Updated:** December 9, 2025
 **Color System:** CSS Variables + Tailwind
-**Total Colors:** 13 brand colors + 4 surface colors
-**Theme:** Warm & Compassionate (Maroon + Orange)
-**Inspiration:** vamatrust.org
-
----
-
-## 📄 **Related Documentation**
-
-- **[COLOR_TRANSFORMATION.md](COLOR_TRANSFORMATION.md)** - Complete transformation details
-- **[OPTIMIZATIONS.md](OPTIMIZATIONS.md)** - Performance & optimization guide
-- **[QUICK_START.md](QUICK_START.md)** - Developer quick reference
+**Total Colors:** 13 brand colors + 3 surface colors

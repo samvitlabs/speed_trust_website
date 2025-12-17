@@ -63,11 +63,11 @@ export default function Contact() {
         description="Contact SPEED Trust for environmental consultancy, partnerships, or volunteer opportunities. Located in Tirunelveli, Tamil Nadu."
         canonical="/contact"
       />
-      <main className="bg-white text-[var(--color-brand-text-dark)]">
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="px-6 py-16" data-reveal>
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">Contact</p>
-          <h1 className="mt-4 text-4xl font-bold text-[var(--color-brand-teal)]">Connect with Southern Pothigai Trust</h1>
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Contact</p>
+          <h1 className="mt-4 text-4xl font-bold">Connect with Southern Pothigai Trust</h1>
           <p className="mt-4 text-base text-slate-600">
             Share your ideas on conservation, collaborations, or community learning—we would love to hear from you.
           </p>
@@ -77,25 +77,25 @@ export default function Contact() {
       <section className="px-6 pb-16" data-reveal>
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="space-y-6 surface-card rounded-3xl p-8 transition transform hover:-translate-y-1 hover:shadow-xl" data-reveal>
-            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-pink)]">Address</p>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Address</p>
             <div className="mt-2 space-y-1 text-base text-slate-600">
               {info.address.map((line) => (
                 <p key={line}>{line}</p>
               ))}
             </div>
-            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-pink)]">Phone</p>
+            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Phone</p>
             <a href={`tel:${info.phone}`} className="mt-2 block text-base font-semibold text-slate-900">
               {info.phone}
             </a>
-            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-pink)]">Email</p>
+            <p className="mt-6 text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Email</p>
             <a href={`mailto:${info.email}`} className="mt-2 block text-base font-semibold text-slate-900">
               {info.email}
             </a>
           </article>
 
           <article className="rounded-3xl surface-card p-8 transition transform hover:-translate-y-1 hover:shadow-2xl" data-reveal>
-            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-pink)]">Write to us</p>
-            <h2 className="mt-2 text-3xl font-semibold text-[var(--color-brand-teal)]">Send a message</h2>
+            <p className="text-sm uppercase tracking-wide text-[var(--color-brand-green)]">Write to us</p>
+            <h2 className="mt-2 text-3xl font-semibold text-slate-900">Send a message</h2>
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <label className="text-sm font-medium text-slate-600">
                 Name

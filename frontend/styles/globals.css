@@ -3,51 +3,25 @@
 @tailwind utilities;
 
 :root {
-  /* Color Palette - Based on vamatrust.org */
-
-  /* Primary Teal/Cyan Tones - Headers, Navigation, Main Titles */
-  --color-brand-teal: #00709d;          /* Primary teal for headers */
-  --color-brand-teal-dark: #326f98;     /* Dark blue-teal variant */
-  --color-brand-teal-light: #1595CE;    /* Light blue for hover states */
-
-  /* Pink/Magenta Accent Tones - Taglines, CTAs, Links */
-  --color-brand-pink: #ed0074;          /* Primary pink for CTAs */
-  --color-brand-pink-bright: #ff1f84;   /* Bright pink for accents */
-
-  /* White & Background */
-  --color-brand-white: #ffffff;         /* Pure white */
-  --color-brand-gray-light: #f0f0f0;    /* Light gray backgrounds */
-  --color-brand-gray-lighter: #f7f9fc;  /* Very light gray */
-
-  /* Text Colors */
-  --color-brand-text-dark: #333333;     /* Dark gray for body text */
-  --color-brand-text-medium: #444444;   /* Medium gray for secondary text */
-  --color-brand-text-muted: #777777;    /* Muted gray for inactive states */
-
-  /* Legacy aliases mapped to new colors */
-  --color-brand-forest: var(--color-brand-teal);
-  --color-brand-canopy: var(--color-brand-teal);
-  --color-brand-moss: var(--color-brand-teal-light);
-  --color-brand-earth: var(--color-brand-pink);
-  --color-brand-clay: var(--color-brand-pink);
-  --color-brand-river: var(--color-brand-pink-bright);
-  --color-brand-sand: var(--color-brand-white);
-  --color-brand-mist: var(--color-brand-gray-lighter);
-  --color-brand-green: var(--color-brand-teal);
-  --color-brand-gold: var(--color-brand-pink);
-  --color-brand-coral: var(--color-brand-pink);
-  --color-brand-teal-accent: var(--color-brand-pink-bright);
-  --color-brand-cream: var(--color-brand-white);
-  --color-brand-slate: var(--color-brand-text-dark);
-  --color-brand-muted: var(--color-brand-text-muted);
-  --color-brand-blue: var(--color-brand-teal);
-  --color-brand-blue-deep: var(--color-brand-teal-dark);
-
-  /* Surface Colors */
-  --color-surface: #ffffff;             /* Pure white for cards */
-  --color-shadow-soft: rgba(0, 112, 157, 0.15);  /* Teal shadow */
-  --color-surface-warm: #ffffff;        /* White for surfaces */
-  --color-surface-border: #d9dce0;      /* Light gray border */
+  --color-brand-forest: #0d2517;
+  --color-brand-canopy: #1c4a2b;
+  --color-brand-moss: #3a7a4c;
+  --color-brand-earth: #b0713c;
+  --color-brand-clay: #b9683c;
+  --color-brand-river: #598f7c;
+  --color-brand-sand: #f5f1e5;
+  --color-brand-mist: #e1eadf;
+  --color-brand-green: var(--color-brand-canopy);
+  --color-brand-gold: #c7a253;
+  --color-brand-coral: var(--color-brand-clay);
+  --color-brand-teal: var(--color-brand-river);
+  --color-brand-cream: var(--color-brand-sand);
+  --color-brand-slate: #0c1c14;
+  --color-brand-muted: #425248;
+  --color-surface: #ffffff;
+  --color-shadow-soft: rgba(8, 23, 14, 0.18);
+  --color-surface-warm: #fbfaf6;
+  --color-surface-border: #dcd4c6;
 }
 
 * {
@@ -57,8 +31,8 @@
 body {
   margin: 0;
   font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--color-brand-white);
-  color: var(--color-brand-text-dark);
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-slate);
   overflow-x: hidden;
 }
 
@@ -96,41 +70,38 @@ a {
 }
 
 .hero-overlay {
-  background: linear-gradient(180deg, rgba(0, 112, 157, 0.25) 0%, rgba(0, 112, 157, 0.85) 100%),
-    linear-gradient(120deg, rgba(21, 149, 206, 0.45), rgba(0, 112, 157, 0.8));
+  background: linear-gradient(180deg, rgba(6, 18, 11, 0.25) 0%, rgba(6, 18, 11, 0.85) 100%),
+    linear-gradient(120deg, rgba(28, 74, 43, 0.45), rgba(12, 37, 22, 0.8));
 }
 
 .surface-card {
   background: var(--color-surface-warm);
   border: 1px solid var(--color-surface-border);
-  box-shadow: 0 12px 28px rgba(0, 112, 157, 0.12);
-  border-radius: 12px;
+  box-shadow: 0 18px 38px rgba(12, 28, 20, 0.08);
 }
 
 .surface-ghost {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--color-surface-border);
-  box-shadow: 0 8px 24px rgba(0, 112, 157, 0.08);
-  border-radius: 10px;
+  box-shadow: 0 16px 32px rgba(12, 28, 20, 0.06);
 }
 
 .section-canopy {
-  background: radial-gradient(circle at 20% 20%, rgba(21, 149, 206, 0.35), transparent 45%),
-    linear-gradient(135deg, #326f98 0%, #00709d 60%, #1595CE 100%);
-  color: #ffffff;
+  background: radial-gradient(circle at 20% 20%, rgba(58, 122, 76, 0.35), transparent 45%),
+    linear-gradient(135deg, #0c2014 0%, #153a23 60%, #1f4f2f 100%);
+  color: #edf4ef;
 }
 
 .section-canopy p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(237, 244, 239, 0.76);
 }
 
 .section-canopy .metric-card {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  box-shadow: 0 12px 32px rgba(0, 112, 157, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 25px 45px rgba(4, 12, 7, 0.55);
   backdrop-filter: blur(10px);
-  color: #ffffff;
-  border-radius: 12px;
+  color: #fdfcf7;
 }
 
 @keyframes fadeInUp {

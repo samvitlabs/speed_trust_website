@@ -42,21 +42,21 @@ export default function OurWork() {
         description="Discover SPEED Trust's environmental initiatives including Friends of Nature Club, rural youth engagement, tree plantation drives, and sustainable agriculture programs."
         canonical="/our-work"
       />
-      <main className="bg-white text-[var(--color-brand-text-dark)]">
+      <main className="bg-[var(--color-brand-cream)] text-[var(--color-brand-slate)]">
       <section className="relative overflow-hidden bg-cover bg-center hero-fade" style={{ backgroundImage: "url('/images/about/new_practices.png')" }} data-reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-5xl flex-col justify-center gap-4 px-6 py-16 text-white">
-          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-brand-white)]">Our Work</p>
-          <h1 className="text-4xl font-bold text-white sm:text-5xl">How SPEED Trust creates impact on the ground</h1>
-          <p className="text-lg text-white">Focused programs that blend ecology, education, and livelihoods.</p>
+          <p className="text-sm uppercase tracking-[0.35em] text-white/80">Our Work</p>
+          <h1 className="text-4xl font-bold sm:text-5xl">How SPEED Trust creates impact on the ground</h1>
+          <p className="text-lg text-white/85">Focused programs that blend ecology, education, and livelihoods.</p>
         </div>
       </section>
 
-      <section className="px-6 py-16 bg-white" data-reveal>
+      <section className="px-6 py-16 bg-[#fffaf3]" data-reveal>
         <div className="mx-auto max-w-6xl space-y-12">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Initiatives</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">Programs that deliver</p>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Initiatives</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">Programs that deliver</p>
           </div>
           <div className="space-y-14">
             {initiatives.map((initiative, idx) => (
@@ -73,7 +73,7 @@ export default function OurWork() {
                   />
                 </div>
                 <div className="lg:w-1/2 w-full space-y-4">
-                  <h3 className="text-3xl font-bold text-[var(--color-brand-teal)]">{initiative.title}</h3>
+                  <h3 className="text-3xl font-bold text-[var(--color-brand-slate)]">{initiative.title}</h3>
                   <p className="text-base leading-relaxed text-[var(--color-brand-muted)]">{initiative.summary}</p>
                   <ul className="space-y-3 text-base text-[var(--color-brand-slate)]">
                     {initiative.points.map((point) => (
@@ -93,8 +93,8 @@ export default function OurWork() {
       <section className="px-6 pb-16" data-reveal>
         <div className="mx-auto max-w-6xl space-y-10">
           <div className="text-center pt-2">
-            <h2 className="text-4xl font-bold text-[var(--color-brand-teal)]">Core Focus Areas</h2>
-            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-pink)]">What we prioritize</p>
+            <h2 className="text-4xl font-bold text-[var(--color-brand-slate)]">Core Focus Areas</h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.35em] text-[var(--color-brand-green)]">What we prioritize</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {focusAreas.map((item) => (
